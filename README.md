@@ -1,4 +1,4 @@
-# InstaSnap [http://instasnap-ga.herokuapp.com](Link)
+# InstaSnap [(link)](http://instasnap-ga.herokuapp.com)
 
 
 ## Approach
