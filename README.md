@@ -20,15 +20,15 @@
 
 ## Technologies Used
 #### MERN Stack
-- MongoDB.
-- Express.
-- React.
-- Node.js.
+- MongoDB
+- Express
+- React
+- Node.js
 
 #### Project management, hosting, and deployment
-- GitHub.
-- Trello: workflow management.
-- Heroku: app deployment.
+- GitHub
+- Trello: workflow management
+- Heroku: app deployment
 
 #### Misc
 - Cloudinary: image hosting and image upload widget.
