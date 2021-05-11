@@ -19,6 +19,20 @@
 - As a user, I should be able to block other users.
 
 ## Technologies Used
+#### MERN Stack
+- MongoDB.
+- Express.
+- React.
+- Node.js.
 
+#### Project management, hosting, and deployment
+- GitHub.
+- Trello: workflow management.
+- Heroku: app deployment.
+
+#### Misc
+- Cloudinary: image hosting and image upload widget.
+- Bootstrap: CSS framework to make our app pretty.
+- Undraw, Unsplash, Pexels: free illustrations and stock photos.
 
 ## Unsolved ~~Mysteries~~ Problems
