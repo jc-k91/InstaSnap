@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Instagram clone - GA SEIR Unit 3 Project",
   "main": "server.js",
+  "engines": {
+      "node": "15.12.0",
+      "npm": "7.10.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
