@@ -3,10 +3,11 @@
 
 class PostEach extends React.Component {
     render = () => {
-        return <div className="hide">
+        return <section className="post-each hide">
             <h4>{this.props.post.author}</h4>
             <img src={this.props.post.image} />
             <p>{this.props.post.caption}</p>
-        </div>
+            <PostComments></PostComments>
+        </section>
     }
 }

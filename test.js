@@ -1,25 +1,19 @@
 class App extends React.Component{
     state = {
+        // FOR RENDERING POSTS
         allPosts: [],
+        // SESSION
+        currentUser: {},
+        // FOR NEW POST CREATION/EXISTING POST EDIT
         author: "",
         image: "",
         caption: "",
-        currentUser: { // JUST FOR TESTING PURPOSES
-            "followers": [],
-            "following": [],
-            "profilePic": "https://www.hl.co.uk/__data/assets/thumbnail/0010/11359108/294x215-ostrich.jpg",
-            "bio": "this is josh's bio",
-            "posts": [],
-            "_id": "609bedcee919e633335da19b",
-            "username": "josh",
-            "password": "$2b$10$zrSD99RqyLiWB7J3Yw.cXuKTreD8Pq9jmzAbKsshOQrcuBFvFPksC",
-            "__v": 0
-        }
+        //
     }
     createPost = (e) => {
         e.preventDefault()
         axios.post(
-            '/posts',
+            '/',
             this.state
         ).then((response) => {
             this.setState(
@@ -28,21 +22,6 @@ class App extends React.Component{
                     author: "",
                     image: "",
                     caption: ""
-                }
-            )
-        })
-    }
-    deletePost = (e) => {
-        e.preventDefault()
-        axios.delete(
-            '/posts/' + e.target.getAttribute('value'),
-            (err, deletedPost) => {
-                console.log(err)
-            }
-        ).then((response) => {
-            this.setState(
-                {
-                    allPosts: response.data
                 }
             )
         })
@@ -61,6 +40,7 @@ class App extends React.Component{
                     allPosts: response.data
                 }
             )
+            console.log(response.data)
         })
     }
     render = () => {
@@ -70,11 +50,12 @@ class App extends React.Component{
             ></UserProfile>
             <GridView
                 allPosts={this.state.allPosts}
-                deletePost={this.deletePost}
             ></GridView>
+            <PostEach
+                post={this.state.allPosts[0]}
+            ></PostEach>
             <NewPostForm
                 handleChange={this.handleChange}
-                createPost={this.createPost}
             ></NewPostForm>
         </div>
     }
