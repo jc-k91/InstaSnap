@@ -35,7 +35,6 @@ class App extends React.Component{
                     allPosts: response.data
                 }
             )
-            console.log(response.data)
         })
     }
     render = () => {
