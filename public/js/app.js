@@ -1,9 +1,26 @@
 class App extends React.Component{
     state = {
-        allPosts: [],
+        allPosts: [
+            { // JUST FOR TESTING PURPOSES
+                "author":"josh",
+                "image":"https://www.marylandzoo.org/wp-content/uploads/2017/11/Ostrich2-1024x683.jpg",
+                "caption":"ostrich, I stretch my neck out for ya"
+            }
+        ],
         author: "",
         image: "",
-        caption: ""
+        caption: "",
+        currentUser: { // JUST FOR TESTING PURPOSES
+            "followers": [],
+            "following": [],
+            "profilePic": "https://www.hl.co.uk/__data/assets/thumbnail/0010/11359108/294x215-ostrich.jpg",
+            "bio": "this is josh's bio",
+            "posts": [],
+            "_id": "609bedcee919e633335da19b",
+            "username": "josh",
+            "password": "$2b$10$zrSD99RqyLiWB7J3Yw.cXuKTreD8Pq9jmzAbKsshOQrcuBFvFPksC",
+            "__v": 0
+        }
     }
     createPost = (e) => {
         e.preventDefault()
@@ -40,13 +57,15 @@ class App extends React.Component{
     }
     render = () => {
         return <div>
-            {this.state.allPosts.map((post) => {
-                return <div key={post._id}>
-                    <h5>{post.author}</h5><br/>
-                    <p>{post.image}</p><br/>
-                    <p>{post.caption}</p>
-                </div>
-            })}
+            <UserProfile
+                currentUser={this.state.currentUser}
+            ></UserProfile>
+            <GridView
+                allPosts={this.state.allPosts}
+            ></GridView>
+            <PostEach
+                post={this.state.allPosts[0]}
+            ></PostEach>
             <NewPostForm
                 handleChange={this.handleChange}
             ></NewPostForm>

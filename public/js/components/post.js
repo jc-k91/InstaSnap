@@ -3,10 +3,10 @@
 
 class PostEach extends React.Component {
     render = () => {
-        return <div>
-            <h4>{this.props.author}</h4>
-            <img src={this.props.image} />
-            <p>{this.props.caption}</p>
+        return <div className="hide">
+            <h4>{this.props.post.author}</h4>
+            <img src={this.props.post.image} />
+            <p>{this.props.post.caption}</p>
         </div>
     }
 }
