@@ -1,32 +1,30 @@
 {
-  "name": "instasnap",
-  "version": "1.0.0",
-  "description": "Instagram clone - GA SEIR Unit 3 Project",
-  "main": "server.js",
-  "engines": {
-      "node": "15.12.0",
-      "npm": "7.10.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jc-k91/InstaSnap.git"
-  },
-  "author": "Clare Eisentrout, Ju Kim, Jesse Moryn",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jc-k91/InstaSnap/issues"
-  },
-  "homepage": "https://github.com/jc-k91/InstaSnap#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^9.0.2",
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "heroku": "^7.2.0",
-    "mongoose": "^5.12.8"
-  }
+    "name": "instasnap-ga",
+    "version": "1.0.0",
+    "engines": {
+        "node": "15.12.0"
+    },
+    "description": "Instagram clone - SEIR Unit 3 project",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jc-k91/instasnap-ga.git"
+    },
+    "keywords": [],
+    "author": "Clare Eisentrout, Ju Kim, Jesse Moryn",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jc-k91/instasnap-ga/issues"
+    },
+    "homepage": "https://github.com/jc-k91/instasnap-ga#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "dotenv": "^9.0.2",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "mongoose": "^5.12.8"
+    }
 }
