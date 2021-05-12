@@ -1,3 +1,12 @@
 .hide {
     display: none;
 }
+
+#main-container {
+  margin: 50px;
+}
+
+img {
+  width: 350px;
+  height: auto;
+}
