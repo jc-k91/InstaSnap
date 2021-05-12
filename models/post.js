@@ -3,10 +3,11 @@ const Schema = mongoose.Schema
 
 const postSchema = new Schema({
   author: String,
-  image: String,
+  image: { type: String, required:true },
   caption: String,
   dateCreated: { type: Date, default: Date(Date.now) },
-  likedBy: []
+  likedBy: [String],
+  comments: [String]
 })
 
 const Post = mongoose.model('Post', postSchema)
