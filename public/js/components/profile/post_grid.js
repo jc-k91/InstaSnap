@@ -8,6 +8,11 @@ class GridView extends React.Component {
                 this.props.allPosts.map((post) => {
                     return <div className="post-square" key={post._id} >
                         <img src={post.image} />
+                        <EditForm
+                          handleChange={this.props.handleChange}
+                          editPost={this.props.editPost}
+                          post={post}
+                        ></EditForm>
                         <form onSubmit={this.props.deletePost} value={post._id}>
                             <input type="submit" value="Delete" />
                         </form>

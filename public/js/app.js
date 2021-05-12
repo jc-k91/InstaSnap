@@ -32,6 +32,17 @@ class App extends React.Component{
             )
         })
     }
+    editPost = (e) => {
+      e.preventDefault()
+      axios.put(
+            '/posts/' + e.target.name, this.state, { new: true }).then(
+              (response) => {
+                this.setState({
+                  allPosts: response.data
+                })
+              }
+            )
+    }
     deletePost = (e) => {
         e.preventDefault()
         // console.log(e.target.value) // What the Farquad. This won't pull the value attritube for some reason...
@@ -72,6 +83,8 @@ class App extends React.Component{
             <GridView
                 allPosts={this.state.allPosts}
                 deletePost={this.deletePost}
+                handleChange={this.handleChange}
+                editPost={this.editPost}
             ></GridView>
             <NewPostForm
                 handleChange={this.handleChange}
