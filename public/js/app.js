@@ -34,6 +34,7 @@ class App extends React.Component{
     }
     deletePost = (e) => {
         e.preventDefault()
+        // console.log(e.target.value) // What the Farquad. This won't pull the value attritube for some reason...
         axios.delete(
             '/posts/' + e.target.getAttribute('value'),
             (err, deletedPost) => {
