@@ -1,5 +1,5 @@
 // props needed:
-//     post's likedBy to search the array for currentUser to determine whether or not logged-in user liked this post
+//     post's comment list to render each comment within the comment list for each post
 
 class Comment extends React.Component {
     render = () => {
