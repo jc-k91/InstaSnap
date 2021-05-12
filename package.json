@@ -2,7 +2,8 @@
     "name": "instasnap-ga",
     "version": "1.0.0",
     "engines": {
-        "node": "15.12.0"
+        "node": "15.12.0",
+        "npm": "7.10.0"
     },
     "description": "Instagram clone - SEIR Unit 3 project",
     "main": "server.js",
