@@ -47,3 +47,6 @@
 - Undraw, Unsplash, Pexels: free illustrations and stock photos.
 
 ## Unsolved ~~Mysteries~~ Problems
+
+## Solved Problems
+- Delete button didn't work until we changed e.target.value in app.js to e.target.getAttribute('value')

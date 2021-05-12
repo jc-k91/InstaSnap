@@ -5,41 +5,59 @@ class App extends React.Component{
         image: "",
         caption: "",
         currentUser: { // JUST FOR TESTING PURPOSES
-            "followers": [],
-            "following": [],
-            "profilePic": "https://www.hl.co.uk/__data/assets/thumbnail/0010/11359108/294x215-ostrich.jpg",
-            "bio": "this is josh's bio",
-            "posts": [],
-            "_id": "609bedcee919e633335da19b",
-            "username": "josh",
-            "password": "$2b$10$zrSD99RqyLiWB7J3Yw.cXuKTreD8Pq9jmzAbKsshOQrcuBFvFPksC",
-            "__v": 0
+            // "followers": [],
+            // "following": [],
+            // "profilePic": "https://www.hl.co.uk/__data/assets/thumbnail/0010/11359108/294x215-ostrich.jpg",
+            // "bio": "this is josh's bio",
+            // "posts": [],
+            // "_id": "609bedcee919e633335da19b",
+            // "username": "josh",
+            // "password": "$2b$10$zrSD99RqyLiWB7J3Yw.cXuKTreD8Pq9jmzAbKsshOQrcuBFvFPksC",
+            // "__v": 0
         }
     }
+    // ========== FUNCTIONS ==========
+    // ------ USER ACCOUNT ------
+    createAccount = () => {
+        axios.post(
+            '/users',
+            this.state
+        ).then((response) => {
+            console.log(response) // THIS IS WHERE WE SHOULD AUTOMATICALLY LOG THE USER IN WITH THE NEW USER CREDENTIALS
+        })
+    }
+    deleteAccount = () => { // FLESH THIS OUT LATER; NOT CRITICAL TO APP FUNCTIONALITY
+        axios.delete(
+
+        )
+    }
+    // ------ SESSION ------
     login = (e) => {
-      e.preventDefault()
-      axios.post(
-        '/session/login',
-        this.state
-      ).then(
-        (response) => {
-          this.setState({
-            currentUser: response.data
-          })
-        }
-      )
+        e.preventDefault()
+        axios.post(
+            '/session/login',
+            this.state
+        ).then((response) => {
+            this.setState(
+                {
+                    currentUser: response.data
+                }
+            )
+        })
     }
     logout = () => {
-      axios.delete(
-        '/session'
-      ).then(
-        (response) => {
-          this.setState({
-            currentUser: {}
-          })
-        }
-      )
+        axios.delete(
+            '/session'
+        ).then((response) => {
+            this.setState(
+                {
+                    currentUser: {}
+                }
+            )
+        })
     }
+
+    // ------ POSTS ------
     createPost = (e) => {
         e.preventDefault()
         axios.post(
@@ -57,15 +75,20 @@ class App extends React.Component{
         })
     }
     editPost = (e) => {
-      e.preventDefault()
-      axios.put(
-            '/posts/' + e.target.name, this.state, { new: true }).then(
-              (response) => {
-                this.setState({
-                  allPosts: response.data
-                })
-              }
-            )
+        e.preventDefault()
+        axios.put(
+            '/posts/' + e.target.name,
+            this.state,
+            { new: true }
+        ).then(
+            (response) => {
+                this.setState(
+                    {
+                        allPosts: response.data
+                    }
+                )
+            }
+        )
     }
     deletePost = (e) => {
         e.preventDefault()
@@ -83,6 +106,8 @@ class App extends React.Component{
             )
         })
     }
+
+    // ------ SETTING STATE TO FORM INPUT ------
     handleChange = (e) => {
         this.setState(
             {
@@ -90,6 +115,8 @@ class App extends React.Component{
             }
         )
     }
+
+    // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
         axios.get('/posts').then((response) => {
             this.setState(
@@ -99,8 +126,14 @@ class App extends React.Component{
             )
         })
     }
+
+    // ------ RENDER ------
     render = () => {
         return <div>
+            <CreateAccount
+                createAccount={this.createAccount}
+                handleChange={this.handleChange}
+            ></CreateAccount>
             <LoginForm
                 handleChange={this.handleChange}
                 login={this.login}

@@ -3,6 +3,9 @@
 
 class CommentForm extends React.Component {
     render = () => {
-
+        return <form onSubmit="">
+            <input type="hidden" />
+            <textarea></textarea>
+        </form>
     }
 }
