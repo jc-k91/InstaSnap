@@ -106,6 +106,17 @@ class App extends React.Component{
             )
         })
     }
+    renderProfile = () => {
+        this.setState(
+            {
+                pageView: "profile"
+            }
+        )
+    }
+
+    renderFunction = (comp1, comp2, comp3) => {
+
+    }
 
     // ------ SETTING STATE TO FORM INPUT ------
     handleChange = (e) => {
@@ -129,34 +140,52 @@ class App extends React.Component{
 
     // ------ RENDER ------
     render = () => {
-        return <div>
-            <CreateAccount
-                createAccount={this.createAccount}
-                handleChange={this.handleChange}
-            ></CreateAccount>
-            <LoginForm
-                handleChange={this.handleChange}
-                login={this.login}
-            ></LoginForm>
-            <UserProfile
-                currentUser={this.state.currentUser}
-            ></UserProfile>
-            <GridView
-                allPosts={this.state.allPosts}
-                deletePost={this.deletePost}
-                handleChange={this.handleChange}
-                editPost={this.editPost}
-            ></GridView>
-            <NewPostForm
-                handleChange={this.handleChange}
-                createPost={this.createPost}
-            ></NewPostForm>
-            <button onClick={this.logout}>Log Out</button>
-        </div>
+        if (this.state.pageView === "profile") {
+            return <div className="container">
+                <Profile></Profile>
+                <GridView></GridView>
+            </div>
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        // return <div>
+        //     <CreateAccount
+        //         createAccount={this.createAccount}
+        //         handleChange={this.handleChange}
+        //     ></CreateAccount>
+        //     <LoginForm
+        //         handleChange={this.handleChange}
+        //         login={this.login}
+        //     ></LoginForm>
+        //     <UserProfile
+        //         currentUser={this.state.currentUser}
+        //     ></UserProfile>
+        //     <GridView
+        //         allPosts={this.state.allPosts}
+        //         deletePost={this.deletePost}
+        //         handleChange={this.handleChange}
+        //         editPost={this.editPost}
+        //     ></GridView>
+        //     <NewPostForm
+        //         handleChange={this.handleChange}
+        //         createPost={this.createPost}
+        //     ></NewPostForm>
+        //     <button onClick={this.logout}>Log Out</button>
+        // </div>
     }
 }
 
 ReactDOM.render(
-    <App></App>,
+    <App></App>, // means the same thing as App.render()
     document.querySelector('main')
 )
