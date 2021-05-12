@@ -16,6 +16,30 @@ class App extends React.Component{
             "__v": 0
         }
     }
+    login = (e) => {
+      e.preventDefault()
+      axios.post(
+        '/session/login',
+        this.state
+      ).then(
+        (response) => {
+          this.setState({
+            currentUser: response.data
+          })
+        }
+      )
+    }
+    logout = () => {
+      axios.delete(
+        '/session'
+      ).then(
+        (response) => {
+          this.setState({
+            currentUser: {}
+          })
+        }
+      )
+    }
     createPost = (e) => {
         e.preventDefault()
         axios.post(
@@ -77,6 +101,10 @@ class App extends React.Component{
     }
     render = () => {
         return <div>
+            <LoginForm
+                handleChange={this.handleChange}
+                login={this.login}
+            ></LoginForm>
             <UserProfile
                 currentUser={this.state.currentUser}
             ></UserProfile>
@@ -90,6 +118,7 @@ class App extends React.Component{
                 handleChange={this.handleChange}
                 createPost={this.createPost}
             ></NewPostForm>
+            <button onClick={this.logout}>Log Out</button>
         </div>
     }
 }

@@ -11,6 +11,7 @@ const User = require('../models/user.js')
 // ROUTES
 // NEW SESSION
 sessions.post('/login', (req, res) => {
+  console.log('req body' + JSON.stringify(req.body));
     User.findOne(
         { username: req.body.username.toLowerCase() },
         (err, foundUser) => {
