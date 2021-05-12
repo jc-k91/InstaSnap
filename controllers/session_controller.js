@@ -1,38 +1,43 @@
-// BCRYPT
+// ========== DEPENDENCIES ==========
+// ------ BCRYPT ------
 const bcrypt = require('bcrypt')
 
-// EXPRESS
+// ------ EXPRESS ------
 const express = require('express')
 const sessions = express.Router()
 
-// MODELS
+// ------ MODELS ------
 const User = require('../models/user.js')
 
-// ROUTES
-// NEW SESSION
+// ========== ROUTES ==========
+// ------ CREATE SESSION (LOGIN) ------
 sessions.post('/login', (req, res) => {
-  console.log('req body' + JSON.stringify(req.body));
     User.findOne(
         { username: req.body.username.toLowerCase() },
         (err, foundUser) => {
+            // IF ERROR
             if (err) {
                 console.log(err)
+            // IF USERNAME IS NOT FOUND
             } else if ( !foundUser ) {
-                res.send("username not found. or is it?")
+                res.send("Invalid login credentials. Is your Caps Lock on? Did you spell your username/password correctly?")
+            // IF USERNAME IS FOUND
             } else {
+                // IF THE PASSWORD IS CORRECT
                 if (bcrypt.compareSync(req.body.password, foundUser.password)) {
-                    console.log('USER SESSION CREATED FOR ' + req.body.username + " =============================")
+                    console.log('==================== ' + req.body.username +  ' LOGGED IN ====================')
                     req.session.currentUser = foundUser
                     res.json(req.session.currentUser)
+                // IF THE PASSWORD IS INCORRECT
                 } else {
-                    res.send("incorrect password. or is it?")
+                    res.send("Invalid login credentials. Is your Caps Lock on? Did you spell your username/password correctly?")
                 }
             }
         }
     )
 })
 
-// DELETE SESSION ======== NEED TO SET STATE -> CURRENTUSER = {}
+// ------ DELETE SESSION (LOGOUT) ------
 sessions.delete('/', (req, res) => {
     req.session.destroy(() => {
         res.json({})
