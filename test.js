@@ -1,31 +1,19 @@
 class App extends React.Component{
     state = {
-        allPosts: [
-            { // JUST FOR TESTING PURPOSES
-                "author":"josh",
-                "image":"https://www.marylandzoo.org/wp-content/uploads/2017/11/Ostrich2-1024x683.jpg",
-                "caption":"ostrich, I stretch my neck out for ya"
-            }
-        ],
+        // FOR RENDERING POSTS
+        allPosts: [],
+        // SESSION
+        currentUser: {},
+        // FOR NEW POST CREATION/EXISTING POST EDIT
         author: "",
         image: "",
         caption: "",
-        currentUser: { // JUST FOR TESTING PURPOSES
-            "followers": [],
-            "following": [],
-            "profilePic": "https://www.hl.co.uk/__data/assets/thumbnail/0010/11359108/294x215-ostrich.jpg",
-            "bio": "this is josh's bio",
-            "posts": [],
-            "_id": "609bedcee919e633335da19b",
-            "username": "josh",
-            "password": "$2b$10$zrSD99RqyLiWB7J3Yw.cXuKTreD8Pq9jmzAbKsshOQrcuBFvFPksC",
-            "__v": 0
-        }
+        //
     }
     createPost = (e) => {
         e.preventDefault()
         axios.post(
-            '/posts',
+            '/',
             this.state
         ).then((response) => {
             this.setState(
@@ -68,7 +56,6 @@ class App extends React.Component{
             ></PostEach>
             <NewPostForm
                 handleChange={this.handleChange}
-                createPost={this.createPost}
             ></NewPostForm>
         </div>
     }
