@@ -3,6 +3,6 @@
 
 class PostComments extends React.Component {
     render = () => {
-
+        return null
     }
 }
