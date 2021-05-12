@@ -1,12 +1,6 @@
 class App extends React.Component{
     state = {
-        allPosts: [
-            { // JUST FOR TESTING PURPOSES
-                "author":"josh",
-                "image":"https://www.marylandzoo.org/wp-content/uploads/2017/11/Ostrich2-1024x683.jpg",
-                "caption":"ostrich, I stretch my neck out for ya"
-            }
-        ],
+        allPosts: [],
         author: "",
         image: "",
         caption: "",
@@ -38,6 +32,21 @@ class App extends React.Component{
             )
         })
     }
+    deletePost = (e) => {
+        e.preventDefault()
+        axios.delete(
+            '/posts/' + e.target.getAttribute('value'),
+            (err, deletedPost) => {
+                console.log(err)
+            }
+        ).then((response) => {
+            this.setState(
+                {
+                    allPosts: response.data
+                }
+            )
+        })
+    }
     handleChange = (e) => {
         this.setState(
             {
@@ -52,7 +61,6 @@ class App extends React.Component{
                     allPosts: response.data
                 }
             )
-            console.log(response.data)
         })
     }
     render = () => {
@@ -62,10 +70,8 @@ class App extends React.Component{
             ></UserProfile>
             <GridView
                 allPosts={this.state.allPosts}
+                deletePost={this.deletePost}
             ></GridView>
-            <PostEach
-                post={this.state.allPosts[0]}
-            ></PostEach>
             <NewPostForm
                 handleChange={this.handleChange}
                 createPost={this.createPost}
