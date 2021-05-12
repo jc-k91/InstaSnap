@@ -17,7 +17,7 @@ const MONGODB_URI = process.env.PROJECT3DB_URI
 // CONTROLLERS =============
 const postsController = require('./controllers/posts_controller.js')
 // const sessionController = require('./controllers/session_controller.js')
-// const usersController = require('./controllers/users_controller.js')
+const usersController = require('./controllers/users_controller.js')
 
 
 // MIDDLEWARE  =============
@@ -26,7 +26,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use('/posts', postsController)
 // app.use('/session', sessionController)
-// app.use('/users', usersController)
+app.use('/users', usersController)
 
 
 // CONNECTIONS  =============
