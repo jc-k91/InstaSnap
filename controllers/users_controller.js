@@ -25,6 +25,13 @@ users.post('/', (req, res) => {
     )
 })
 
+
+// GET SINGLE USER
+users.get('/:username', (req, res) => {
+    User.find({username: req.params.username}, (err, foundUser) => {
+        res.json(foundUser)
+    })
+})
 // SETTINGS -- FOR LATER
 
 // DELETE -- FOR LATER
