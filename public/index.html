@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <script defer src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script defer src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-    <script defer src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer type="text/babel" src="./js/components/button_like.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/components/form_comment.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/components/form_edit_post.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/components/form_new_post.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/components/post_comments.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/components/post_grid.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/components/post.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/components/profile.js" charset="utf-8"></script>
-    <script defer type="text/babel" src="./js/app.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <title>InstaSnap</title>
-</head>
-<body>
-    <main id="main-container">
+    <head>
+        <!-- REACT STUFF -->
+            <script defer src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+            <script defer src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+            <script defer src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+            <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    </main>
-</body>
+        <!-- COMPONTENTS -->
+            <!-- LIKE BUTTON: the like button -->
+                <script defer type="text/babel" src="./js/components/button_like.js" charset="utf-8"></script>
+            <!-- FORM, COMMENT: the form for adding a comment to another user's post -->
+                <script defer type="text/babel" src="./js/components/form_comment.js" charset="utf-8"></script>
+            <!-- FORM, EDIT POST: the form for editing an existing post -->
+                <script defer type="text/babel" src="./js/components/form_edit_post.js" charset="utf-8"></script>
+            <!-- FORM, NEW POST: the form for creating a new post -->
+                <script defer type="text/babel" src="./js/components/form_new_post.js" charset="utf-8"></script>
+            <!-- COMMENT: each singular comment -->
+                <script defer type="text/babel" src="./js/components/comments.js" charset="utf-8"></script>
+            <!-- ALL COMMENTS: list of comments for each post -->
+                <script defer type="text/babel" src="./js/components/post_comments.js" charset="utf-8"></script>
+            <!-- POST: each singular post and its details -->
+                <script defer type="text/babel" src="./js/components/post.js" charset="utf-8"></script>
+            <!-- GRID VIEW: feed's grid view of just images -->
+                <script defer type="text/babel" src="./js/components/post_grid.js" charset="utf-8"></script>
+            <!-- PROFILE PAGE: link each user and push as prop to render specific user's profile -->
+                <script defer type="text/babel" src="./js/components/profile.js" charset="utf-8"></script>
+            <!-- MAIN: main component that is rendered onto base page -->
+                <script defer type="text/babel" src="./js/app.js" charset="utf-8"></script>
+
+        <!-- STYLESHEETS -->
+            <link rel="stylesheet" href="./css/bootstrap.css">
+            <link rel="stylesheet" href="./css/main.css">
+
+        <!-- TITLE -->
+        <title>InstaSnap</title>
+
+        <!-- OTHER META INFO -->
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+
+    <body>
+        <main id="main-container">
+
+        </main>
+    </body>
 </html>
