@@ -13,7 +13,7 @@ const userSchema = new Schema({
     followers: Array,
     following: Array,
     posts: {
-        type: [Object],
+        type: Array,
         default: []
     }
 })
