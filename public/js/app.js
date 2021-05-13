@@ -31,10 +31,16 @@ class App extends React.Component{
         ).then((response) => {
             this.setState(
                 {
-                    loggedIn: true,
                     currentUser: response.data
                 }
             )
+            if (this.state.currentUser !== {}) {
+                this.setState(
+                    {
+                        loggedIn: true,
+                    }
+                )
+            }
         })
     }
     logout = () => {
@@ -134,11 +140,14 @@ class App extends React.Component{
     // ------ RENDER ------
     render = () => {
         if (this.state.loggedIn === true) {
-            return <ProfileView></ProfileView>
+            return <ProfileView
+                logout={this.logout}
+            ></ProfileView>
         } else {
             return <LandingView
                 handleChange={this.handleChange}
                 login={this.login}
+                createAccount={this.createAccount}
             ></LandingView>
         }
     }
