@@ -1,6 +1,5 @@
 # InstaSnap [(link)](http://instasnap-ga.herokuapp.com)
 
-
 ## Approach
 #### Picking a Project Idea
 We discussed a few different ideas ranging from travel blogs to photo sharing apps, and thought that a photo sharing app would have a good range of stretch goal opportunities while also showcasing basic CRUD functionality.
@@ -58,7 +57,6 @@ We opted for the latter and created the necessary page components so as to not c
 
 ## Unsolved ~~Mysteries~~ Problems
 - We don't know why e.target.value doesn't work for the delete button. We got around it using the getAttribute() method, but this is still <em>baffling</em>. We are <em>STILL BAFFLED</em>.
-
 
 ## Solved Problems
 - Delete button didn't work until we changed e.target.value in app.js to e.target.getAttribute('value')
