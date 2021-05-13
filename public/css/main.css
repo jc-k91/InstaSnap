@@ -26,8 +26,6 @@ button {
 input[type=submit]:hover {
   opacity: 75%;
 }
-<<<<<<< HEAD
-
 
 /*==============================================================
 ========================== MOBILE ============================*/
@@ -119,5 +117,3 @@ input[type=submit]:hover {
 @media only screen and (min-width: 992px) {
 
 }
-=======
->>>>>>> 9b935792cc17335b7185ef6ec6a0e117db802d66
