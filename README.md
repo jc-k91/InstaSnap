@@ -65,3 +65,4 @@ We opted for the latter and created the necessary page components so as to not c
 #### Reflection Section
 - All three group members in different time zones
 - Ended up pair programming mostly everything - ~~allowed us the opportunity~~ forced us to approach ~~big~~ <em>new</em> issues from multiple perspectives. We had to articulate our respective thought processes and find a way to reconcile any differences into a single actionable plan(?).
+- 90% of this has been debugging random bullshit -Jesse
