@@ -57,6 +57,11 @@ We opted for the latter and created the necessary page components so as to not c
 
 ## Unsolved ~~Mysteries~~ Problems
 - We don't know why e.target.value doesn't work for the delete button. We got around it using the getAttribute() method, but this is still <em>baffling</em>. We are <em>STILL BAFFLED</em>.
+- There are instances when hitting back in our browser window takes us "back", which shouldn't happen because we're building a SPA. When this error occurs, the browser's URL bar is updated with the user's username and password visible as filters. This is not a game breaking for our project, but definitely a security issue in a production setting.
 
 ## Solved Problems
 - Delete button didn't work until we changed e.target.value in app.js to e.target.getAttribute('value')
+
+#### Reflection Section
+- All three group members in different time zones
+- Ended up pair programming mostly everything - ~~allowed us the opportunity~~ forced us to approach ~~big~~ <em>new</em> issues from multiple perspectives. We had to articulate our respective thought processes and find a way to reconcile any differences into a single actionable plan(?).
