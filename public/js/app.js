@@ -1,45 +1,59 @@
 class App extends React.Component{
     state = {
+        loggedIn: false,
+        currentView: "profile",
         allPosts: [],
-        author: "",
         image: "",
         caption: "",
-        currentUser: { // JUST FOR TESTING PURPOSES
-            "followers": [],
-            "following": [],
-            "profilePic": "https://www.hl.co.uk/__data/assets/thumbnail/0010/11359108/294x215-ostrich.jpg",
-            "bio": "this is josh's bio",
-            "posts": [],
-            "_id": "609bedcee919e633335da19b",
-            "username": "josh",
-            "password": "$2b$10$zrSD99RqyLiWB7J3Yw.cXuKTreD8Pq9jmzAbKsshOQrcuBFvFPksC",
-            "__v": 0
-        }
+        currentUser: {}
     }
+    // ========== FUNCTIONS ==========
+    // ------ USER ACCOUNT ------
+    createAccount = () => {
+        axios.post(
+            '/users',
+            this.state
+        ).then((response) => {
+            console.log(response) // THIS IS WHERE WE SHOULD AUTOMATICALLY LOG THE USER IN WITH THE NEW USER CREDENTIALS
+        })
+    }
+    deleteAccount = () => {
+        axios.delete(
+
+        )
+    }
+    // ------ SESSION ------
     login = (e) => {
-      e.preventDefault()
-      axios.post(
-        '/session/login',
-        this.state
-      ).then(
-        (response) => {
-          this.setState({
-            currentUser: response.data
-          })
-        }
-      )
+        e.preventDefault()
+        axios.post(
+            '/session/login',
+            this.state
+        ).then((response) => {
+            if (this.state.currentUser !== {}) {
+                this.setState(
+                    {
+                        loggedIn: true,
+                        currentUser: response.data,
+                        author: response.data.username
+                    }
+                )
+            }
+        })
     }
     logout = () => {
-      axios.delete(
-        '/session'
-      ).then(
-        (response) => {
-          this.setState({
-            currentUser: {}
-          })
-        }
-      )
+        axios.delete(
+            '/session'
+        ).then((response) => {
+            this.setState(
+                {
+                    loggedIn: false,
+                    currentUser: {}
+                }
+            )
+        })
     }
+
+    // ------ POSTS ------
     createPost = (e) => {
         e.preventDefault()
         axios.post(
@@ -57,15 +71,20 @@ class App extends React.Component{
         })
     }
     editPost = (e) => {
-      e.preventDefault()
-      axios.put(
-            '/posts/' + e.target.name, this.state, { new: true }).then(
-              (response) => {
-                this.setState({
-                  allPosts: response.data
-                })
-              }
-            )
+        e.preventDefault()
+        axios.put(
+            '/posts/' + e.target.name,
+            this.state,
+            { new: true }
+        ).then(
+            (response) => {
+                this.setState(
+                    {
+                        allPosts: response.data
+                    }
+                )
+            }
+        )
     }
     deletePost = (e) => {
         e.preventDefault()
@@ -83,6 +102,19 @@ class App extends React.Component{
             )
         })
     }
+    renderProfile = () => {
+        this.setState(
+            {
+                pageView: "profile"
+            }
+        )
+    }
+
+    renderFunction = (pageViewComponent) => {
+        this.render(pageViewComponent)
+    }
+
+    // ------ SETTING STATE TO FORM INPUT ------
     handleChange = (e) => {
         this.setState(
             {
@@ -90,6 +122,8 @@ class App extends React.Component{
             }
         )
     }
+
+    // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
         axios.get('/posts').then((response) => {
             this.setState(
@@ -99,27 +133,35 @@ class App extends React.Component{
             )
         })
     }
+
+
+    // ------ RENDER ------
     render = () => {
-        return <div>
-            <LoginForm
+        if (this.state.loggedIn === true) {
+            if (this.state.currentView === "profile") {
+                return <ProfileView
+                    logout={this.logout}
+                    allPosts={this.state.allPosts}
+                    currentUser={this.state.currentUser}
+                    changeView={this.changeView}
+                    handleChange={this.handleChange}
+                    createPost={this.createPost}
+                ></ProfileView>
+        /* RENDER OTHER PAGE VIEWS HERE */
+            } else if (this.state.currentView === "a") {
+                return null
+            } else if (this.state.currentView === "b") {
+                return null
+            } else if (this.state.currentView === "c") {
+                return null
+            }
+        } else {
+            return <LandingView
                 handleChange={this.handleChange}
                 login={this.login}
-            ></LoginForm>
-            <UserProfile
-                currentUser={this.state.currentUser}
-            ></UserProfile>
-            <GridView
-                allPosts={this.state.allPosts}
-                deletePost={this.deletePost}
-                handleChange={this.handleChange}
-                editPost={this.editPost}
-            ></GridView>
-            <NewPostForm
-                handleChange={this.handleChange}
-                createPost={this.createPost}
-            ></NewPostForm>
-            <button onClick={this.logout}>Log Out</button>
-        </div>
+                createAccount={this.createAccount}
+            ></LandingView>
+        }
     }
 }
 

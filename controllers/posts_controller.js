@@ -1,28 +1,34 @@
-// EXPRESS ==========
+// ========== DEPENDENCIES ==========
+// ------ EXPRESS ------
 const express = require('express')
 const posts = express.Router()
 
-// SCHEMA ==========
+// ------ SCHEMA ------
 const Post = require('../models/post.js')
+const User = require('../models/user.js')
 
-// ROUTES ==========
-// INDEX
+// ========== ROUTES ==========
+// ------ ALL POSTS ------
 posts.get('/', (req, res) => {
     Post.find({}, (err, allPosts) => {
         res.json(allPosts)
     })
 })
 
-// CREATE
+// ------ CREATE POST ------
 posts.post('/', (req, res) => {
-    Post.create(req.body, (err, createdPost) => {
-        Post.find({}, (error, allPosts) => {
-            res.json(allPosts)
+    User.findById(req.session.currentUser._id, (err1, foundUser) => {
+        Post.create(req.body, (err2, createdPost) => {
+            foundUser.posts.shift(createdPost)
+            foundUser.save()
+            Post.find({}, (err3, allPosts) => {
+                res.json(allPosts)
+            })
         })
     })
 })
 
-// UPDATE
+// ------ UPDATE POST ------
 posts.put('/:id', (req, res) => {
     Post.findByIdAndUpdate(
         req.params.id,
@@ -42,7 +48,7 @@ posts.put('/:id', (req, res) => {
     )
 })
 
-// DELETE
+// ------ DELETE POST ------
 posts.delete('/:id', (req, res) => {
     Post.findByIdAndRemove(
         req.params.id,

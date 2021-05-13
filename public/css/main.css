@@ -1,3 +1,14 @@
+/*==============================================================
+===================== GLOBAL STYLES ==========================*/
+
+body {
+  color: var(--blue-black);
+}
+
+h1, h2, h3, h4 {
+  color: var(--orange);
+}
+
 .hide {
     display: none;
 }
@@ -6,7 +17,12 @@
   margin: 50px;
 }
 
-img {
-  width: 350px;
-  height: auto;
+input[type=submit],
+button {
+  border: 1px solid var(--blue-black);
+  transition: .2s;
+}
+
+input[type=submit]:hover {
+  opacity: 75%;
 }

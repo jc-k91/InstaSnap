@@ -1,0 +1,38 @@
+/*==============================================================
+========================== MOBILE ============================*/
+
+/* @media only screen and (min-width: 576) {} */
+  /*----- PROFILE VIEW ------*/
+
+  .user-profile {
+      text-align: center;
+  }
+
+  .user-profile h2 {
+      width: 100%;
+      text-align: center;
+  }
+
+  .user-profile img {
+      width: 250px;
+      height: 250px;
+      margin: 10px;
+      border-radius: 50%;
+      object-fit: cover;
+  }
+
+  /*----- PROFILE VIEW - POST GRID ------*/
+
+
+  .post-grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .post-grid img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    margin: 10px;
+  }
