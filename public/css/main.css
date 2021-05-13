@@ -37,7 +37,29 @@ input[type=submit]:hover {
 /*==============================================================
 ========================== MOBILE ============================*/
 
+/*----- PROFILE VIEW ------*/
+
+.user-profile {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.user-profile h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.user-profile img {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 /*----- PROFILE VIEW - POST GRID ------*/
+
 
 .post-grid {
   display: flex;
