@@ -22,6 +22,16 @@ img {
   height: auto;
 }
 
+input[type=submit],
+button {
+  border: 1px solid var(--blue-black);
+  transition: .2s;
+}
+
+input[type=submit]:hover {
+  opacity: 75%;
+}
+
 
 /*==============================================================
 ========================== MOBILE ============================*/
