@@ -17,10 +17,11 @@ h1, h2, h3, h4 {
   margin: 50px;
 }
 
-img {
+/* img {
   width: 350px;
-  height: auto;
-}
+  height: 350px;
+  object-fit: cover;
+} */
 
 input[type=submit],
 button {
@@ -36,6 +37,19 @@ input[type=submit]:hover {
 /*==============================================================
 ========================== MOBILE ============================*/
 
+/*----- PROFILE VIEW - POST GRID ------*/
+
+.post-grid {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.post-grid img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  margin: 10px;
+}
 
 
 /*==============================================================
