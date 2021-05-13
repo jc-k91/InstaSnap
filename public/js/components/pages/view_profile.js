@@ -8,7 +8,7 @@ class ProfileView extends React.Component{
                 currentUser={this.props.currentUser}
             ></UserProfile>
             <GridView
-                allPosts={this.props.allPosts}
+                userPosts={this.props.currentUser.posts}
             ></GridView>
             <NewPostForm
                 handleChange={this.props.handleChange}
