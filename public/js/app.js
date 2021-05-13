@@ -134,15 +134,6 @@ class App extends React.Component{
         })
     }
 
-
-    changeView = () => {
-        this.setState(
-            {
-                currentView: "landing"
-            }
-        )
-    }
-
     // ------ RENDER ------
     render = () => {
         if (this.state.loggedIn === true) {
