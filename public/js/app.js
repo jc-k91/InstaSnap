@@ -3,8 +3,6 @@ class App extends React.Component{
         loggedIn: false,
         currentView: "profile",
         allUsers: [],
-        image: "",
-        caption: "",
         currentUser: {}
     }
     // ========== FUNCTIONS ==========
