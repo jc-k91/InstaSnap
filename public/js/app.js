@@ -29,15 +29,11 @@ class App extends React.Component{
             '/session/login',
             this.state
         ).then((response) => {
-            this.setState(
-                {
-                    currentUser: response.data
-                }
-            )
             if (this.state.currentUser !== {}) {
                 this.setState(
                     {
                         loggedIn: true,
+                        currentUser: response.data
                     }
                 )
             }
@@ -142,6 +138,8 @@ class App extends React.Component{
         if (this.state.loggedIn === true) {
             return <ProfileView
                 logout={this.logout}
+                allPosts={this.state.allPosts}
+                currentUser={this.state.currentUser}
             ></ProfileView>
         } else {
             return <LandingView
@@ -151,35 +149,6 @@ class App extends React.Component{
             ></LandingView>
         }
     }
-
-
-
-    // render = () => {
-    //     return <div>
-    //         <CreateAccount
-    //             createAccount={this.createAccount}
-    //             handleChange={this.handleChange}
-    //         ></CreateAccount>
-    //         <LoginForm
-    //             handleChange={this.handleChange}
-    //             login={this.login}
-    //         ></LoginForm>
-    //         <UserProfile
-    //             currentUser={this.state.currentUser}
-    //         ></UserProfile>
-    //         <GridView
-    //             allPosts={this.state.allPosts}
-    //             deletePost={this.deletePost}
-    //             handleChange={this.handleChange}
-    //             editPost={this.editPost}
-    //         ></GridView>
-    //         <NewPostForm
-    //             handleChange={this.handleChange}
-    //             createPost={this.createPost}
-    //         ></NewPostForm>
-    //         <button onClick={this.logout}>Log Out</button>
-    //     </div>
-    // }
 }
 
 ReactDOM.render(
