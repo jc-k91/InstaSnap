@@ -2,9 +2,7 @@ class App extends React.Component{
     state = {
         loggedIn: false,
         currentView: "profile",
-        allPosts: [],
-        image: "",
-        caption: "",
+        allUsers: [],
         currentUser: {}
     }
     // ========== FUNCTIONS ==========
@@ -59,15 +57,18 @@ class App extends React.Component{
         axios.post(
             '/posts',
             this.state
-        ).then((response) => {
-            this.setState(
-                {
-                    allPosts: response.data,
-                    author: "",
-                    image: "",
-                    caption: ""
-                }
-            )
+        ).then((postResponse) => {
+            axios.get(
+                '/users/' + this.state.currentUser.username
+            ).then((userResponse) => {
+                this.setState(
+                    {
+                        currentUser: userResponse.data[0],
+                        image: "",
+                        caption: ""
+                    }
+                )
+            })
         })
     }
     editPost = (e) => {
@@ -141,7 +142,6 @@ class App extends React.Component{
             if (this.state.currentView === "profile") {
                 return <ProfileView
                     logout={this.logout}
-                    allPosts={this.state.allPosts}
                     currentUser={this.state.currentUser}
                     changeView={this.changeView}
                     handleChange={this.handleChange}

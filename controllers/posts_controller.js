@@ -19,10 +19,11 @@ posts.get('/', (req, res) => {
 posts.post('/', (req, res) => {
     User.findById(req.session.currentUser._id, (err1, foundUser) => {
         Post.create(req.body, (err2, createdPost) => {
-            foundUser.posts.shift(createdPost)
+            foundUser.posts.unshift(createdPost)
             foundUser.save()
-            Post.find({}, (err3, allPosts) => {
-                res.json(allPosts)
+            console.log(foundUser.posts);
+            User.find({}, (err3, allUsers) => {
+                res.json(allUsers)
             })
         })
     })
