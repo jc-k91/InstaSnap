@@ -1,6 +1,7 @@
 class App extends React.Component{
     state = {
         loggedIn: false,
+        currentView: "profile",
         allPosts: [],
         author: "",
         image: "",
@@ -133,14 +134,33 @@ class App extends React.Component{
         })
     }
 
+
+    changeView = () => {
+        this.setState(
+            {
+                currentView: "landing"
+            }
+        )
+    }
+
     // ------ RENDER ------
     render = () => {
         if (this.state.loggedIn === true) {
-            return <ProfileView
-                logout={this.logout}
-                allPosts={this.state.allPosts}
-                currentUser={this.state.currentUser}
-            ></ProfileView>
+            if (this.state.currentView === "profile") {
+                return <ProfileView
+                    logout={this.logout}
+                    allPosts={this.state.allPosts}
+                    currentUser={this.state.currentUser}
+                    changeView={this.changeView}
+                ></ProfileView>
+        /* RENDER OTHER PAGE VIEWS HERE */
+            } else if (this.state.currentView === "a") {
+                return null
+            } else if (this.state.currentView === "b") {
+                return null
+            } else if (this.state.currentView === "c") {
+                return null
+            }
         } else {
             return <LandingView
                 handleChange={this.handleChange}
