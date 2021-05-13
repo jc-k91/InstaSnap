@@ -29,14 +29,13 @@ class App extends React.Component{
             '/session/login',
             this.state
         ).then((response) => {
-            if (this.state.currentUser !== {}) {
-                this.setState(
-                    {
-                        loggedIn: true,
-                        currentUser: response.data
-                    }
-                )
-            }
+            this.setState(
+                {
+                    loggedIn: true,
+                    currentUser: response.data
+                }
+            )
+            console.log(currentUser);
         })
     }
     logout = () => {
@@ -136,19 +135,43 @@ class App extends React.Component{
     // ------ RENDER ------
     render = () => {
         if (this.state.loggedIn === true) {
-            return <ProfileView
-                logout={this.logout}
-                allPosts={this.state.allPosts}
-                currentUser={this.state.currentUser}
-            ></ProfileView>
+            return <ProfileView></ProfileView>
         } else {
             return <LandingView
                 handleChange={this.handleChange}
                 login={this.login}
-                createAccount={this.createAccount}
             ></LandingView>
         }
     }
+
+
+
+    // render = () => {
+    //     return <div>
+    //         <CreateAccount
+    //             createAccount={this.createAccount}
+    //             handleChange={this.handleChange}
+    //         ></CreateAccount>
+    //         <LoginForm
+    //             handleChange={this.handleChange}
+    //             login={this.login}
+    //         ></LoginForm>
+    //         <UserProfile
+    //             currentUser={this.state.currentUser}
+    //         ></UserProfile>
+    //         <GridView
+    //             allPosts={this.state.allPosts}
+    //             deletePost={this.deletePost}
+    //             handleChange={this.handleChange}
+    //             editPost={this.editPost}
+    //         ></GridView>
+    //         <NewPostForm
+    //             handleChange={this.handleChange}
+    //             createPost={this.createPost}
+    //         ></NewPostForm>
+    //         <button onClick={this.logout}>Log Out</button>
+    //     </div>
+    // }
 }
 
 ReactDOM.render(

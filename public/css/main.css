@@ -17,11 +17,6 @@ h1, h2, h3, h4 {
   margin: 50px;
 }
 
-img {
-  width: 350px;
-  height: auto;
-}
-
 input[type=submit],
 button {
   border: 1px solid var(--blue-black);
@@ -36,7 +31,18 @@ input[type=submit]:hover {
 /*==============================================================
 ========================== MOBILE ============================*/
 
+/*------ PROFILE IMG GRID ------*/
 
+.post-grid {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+img {
+  min-width: 200px;
+  min-height: 200px;
+  object-fit: cover;
+}
 
 /*==============================================================
 ========================= TABLET ==============================*/
