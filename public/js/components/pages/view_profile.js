@@ -10,6 +10,11 @@ class ProfileView extends React.Component{
             <GridView
                 allPosts={this.props.allPosts}
             ></GridView>
+            <NewPostForm
+                handleChange={this.props.handleChange}
+                createPost={this.props.createPost}
+                currentUser={this.props.currentUser}
+            ></NewPostForm>
         </div>
     }
 }
