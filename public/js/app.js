@@ -3,7 +3,9 @@ class App extends React.Component{
         loggedIn: false,
         currentView: "profile",
         allUsers: [],
-        currentUser: {}
+        currentUser: {},
+        username: 'jesse',// DELETE FOR FULL PRODUCTION DEPLOYMENT
+        password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
     // ========== FUNCTIONS ==========
     // ------ USER ACCOUNT ------
