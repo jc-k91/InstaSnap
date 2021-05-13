@@ -5,6 +5,7 @@ const posts = express.Router()
 
 // ------ SCHEMA ------
 const Post = require('../models/post.js')
+const User = require('../models/user.js')
 
 // ========== ROUTES ==========
 // ------ ALL POSTS ------
@@ -16,9 +17,13 @@ posts.get('/', (req, res) => {
 
 // ------ CREATE POST ------
 posts.post('/', (req, res) => {
-    Post.create(req.body, (err, createdPost) => {
-        Post.find({}, (error, allPosts) => {
-            res.json(allPosts)
+    User.findById(req.session.currentUser._id, (err1, foundUser) => {
+        Post.create(req.body, (err2, createdPost) => {
+            foundUser.posts.shift(createdPost)
+            foundUser.save()
+            Post.find({}, (err3, allPosts) => {
+                res.json(allPosts)
+            })
         })
     })
 })

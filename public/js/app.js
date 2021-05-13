@@ -3,7 +3,6 @@ class App extends React.Component{
         loggedIn: false,
         currentView: "profile",
         allPosts: [],
-        author: "",
         image: "",
         caption: "",
         currentUser: {}
@@ -34,7 +33,8 @@ class App extends React.Component{
                 this.setState(
                     {
                         loggedIn: true,
-                        currentUser: response.data
+                        currentUser: response.data,
+                        author: response.data.username
                     }
                 )
             }
@@ -144,6 +144,8 @@ class App extends React.Component{
                     allPosts={this.state.allPosts}
                     currentUser={this.state.currentUser}
                     changeView={this.changeView}
+                    handleChange={this.handleChange}
+                    createPost={this.createPost}
                 ></ProfileView>
         /* RENDER OTHER PAGE VIEWS HERE */
             } else if (this.state.currentView === "a") {
