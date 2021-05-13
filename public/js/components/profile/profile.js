@@ -6,7 +6,9 @@ class UserProfile extends React.Component {
       return <section className="user-profile ">
         <h2>{this.props.currentUser.username}</h2>
         <img src={this.props.currentUser.profilePic} alt={this.props.currentUser.username} />
-        <p>{this.props.currentUser.bio}</p>
+        <div>
+          <p>{this.props.currentUser.bio}</p>
+        </div>
       </section>
     }
 }
