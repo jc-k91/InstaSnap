@@ -2,11 +2,6 @@ class NewPostForm extends React.Component{
     render = () => {
         return <form onSubmit={this.props.createPost}>
             <input
-                type="hidden"
-                name="author"
-                value="currentUser" // ADD CURRENT USER TO THIS
-            /><br/>
-            <input
                 type="text"
                 name="image"
                 placeholder="Image URL"
@@ -22,6 +17,7 @@ class NewPostForm extends React.Component{
                 type="submit"
                 value="Create Post"
             />
+
         </form>
     }
 }
