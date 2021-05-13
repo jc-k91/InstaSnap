@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- REACT STUFF -->
+        <!-- ========== REACT STUFF ========== -->
             <script defer src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
             <script defer src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
             <script defer src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
             <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-        <!-- COMPONTENTS -->
-            <!-- LIKE BUTTON: the like button -->
+        <!-- ========== COMPONTENTS ========== -->
+            <!-- LIKE BUTTON
+                    the like button -->
                 <script defer type="text/babel" src="./js/components/post/button_like.js" charset="utf-8"></script>
-            <!-- FORM, COMMENT: the form for adding a comment to another user's post -->
+            <!-- FORM, COMMENT
+                    the form for adding a comment to another user's post -->
                 <script defer type="text/babel" src="./js/components/post/form_comment.js" charset="utf-8"></script>
-            <!-- FORM, EDIT POST: the form for editing an existing post -->
+            <!-- FORM, EDIT POST
+                    the form for editing an existing post -->
                 <script defer type="text/babel" src="./js/components/post/post_menu/form_edit_post.js" charset="utf-8"></script>
-            <!-- FORM, NEW POST: the form for creating a new post -->
+            <!-- FORM, NEW POST
+                    the form for creating a new post -->
                 <script defer type="text/babel" src="./js/components/profile/form_new_post.js" charset="utf-8"></script>
-            <!-- FORM, CREATE USER: the form for creating a user -->
+            <!-- FORM, CREATE USER
+                    the form for creating a user -->
                 <script defer type="text/babel" src="./js/components/sessions/form_create_account.js" charset="utf-8"></script>
-            <!-- FORM, USER LOGIN: the form for logging a user in -->
+            <!-- FORM, USER LOGIN
+                    the form for logging a user in -->
                 <script defer type="text/babel" src="./js/components/sessions/form_login.js" charset="utf-8"></script>
-            <!-- COMMENT: each singular comment -->
+            <!-- COMMENT
+                    each singular comment -->
                 <script defer type="text/babel" src="./js/components/post/comment.js" charset="utf-8"></script>
-            <!-- ALL COMMENTS: list of comments for each post -->
+            <!-- ALL COMMENTS
+                    list of all comments for each post -->
                 <script defer type="text/babel" src="./js/components/post/post_comments.js" charset="utf-8"></script>
-            <!-- POST: each singular post and its details -->
+            <!-- POST
+                    each singular post and its details -->
                 <script defer type="text/babel" src="./js/components/post/post.js" charset="utf-8"></script>
-            <!-- GRID VIEW: feed's grid view of just images -->
+            <!-- GRID VIEW
+                    feed's grid view of just images -->
                 <script defer type="text/babel" src="./js/components/profile/post_grid.js" charset="utf-8"></script>
-            <!-- PROFILE PAGE: link each user and push as prop to render specific user's profile -->
+            <!-- PROFILE
+                    link each user and push as prop to render specific user's profile -->
                 <script defer type="text/babel" src="./js/components/profile/profile.js" charset="utf-8"></script>
-            <!-- MAIN: main component that is rendered onto base page -->
+            <!-- PAGE, PROFILE
+                    full profile view -->
+                <script defer type="text/babel" src="./js/components/pages/view_profile.js" charset="utf-8"></script>
+            <!-- PAGE, POST
+                    full single post view -->
+                <script defer type="text/babel" src="./js/components/pages/view_post.js" charset="utf-8"></script>
+            <!-- PAGE, LANDING
+                    landing view (login/create account) -->
+                <script defer type="text/babel" src="./js/components/pages/view_landing.js" charset="utf-8"></script>
+            <!-- MAIN
+                    main component that is rendered onto base page -->
                 <script defer type="text/babel" src="./js/app.js" charset="utf-8"></script>
 
-        <!-- STYLESHEETS -->
+        <!-- ========== STYLESHEETS ========== -->
             <link rel="stylesheet" href="./css/bootstrap.css">
             <link rel="stylesheet" href="./css/main.css">
 
-        <!-- TITLE -->
+        <!-- ========== TITLE ========== -->
         <title>InstaSnap</title>
 
-        <!-- OTHER META INFO -->
+        <!-- ========== OTHER META INFO ========== -->
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">

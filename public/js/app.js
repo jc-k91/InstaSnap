@@ -1,20 +1,11 @@
 class App extends React.Component{
     state = {
+        loggedIn: false,
         allPosts: [],
         author: "",
         image: "",
         caption: "",
-        currentUser: { // JUST FOR TESTING PURPOSES
-            // "followers": [],
-            // "following": [],
-            // "profilePic": "https://www.hl.co.uk/__data/assets/thumbnail/0010/11359108/294x215-ostrich.jpg",
-            // "bio": "this is josh's bio",
-            // "posts": [],
-            // "_id": "609bedcee919e633335da19b",
-            // "username": "josh",
-            // "password": "$2b$10$zrSD99RqyLiWB7J3Yw.cXuKTreD8Pq9jmzAbKsshOQrcuBFvFPksC",
-            // "__v": 0
-        }
+        currentUser: {}
     }
     // ========== FUNCTIONS ==========
     // ------ USER ACCOUNT ------
@@ -26,7 +17,7 @@ class App extends React.Component{
             console.log(response) // THIS IS WHERE WE SHOULD AUTOMATICALLY LOG THE USER IN WITH THE NEW USER CREDENTIALS
         })
     }
-    deleteAccount = () => { // FLESH THIS OUT LATER; NOT CRITICAL TO APP FUNCTIONALITY
+    deleteAccount = () => {
         axios.delete(
 
         )
@@ -40,6 +31,7 @@ class App extends React.Component{
         ).then((response) => {
             this.setState(
                 {
+                    loggedIn: true,
                     currentUser: response.data
                 }
             )
@@ -51,6 +43,7 @@ class App extends React.Component{
         ).then((response) => {
             this.setState(
                 {
+                    loggedIn: false,
                     currentUser: {}
                 }
             )
@@ -106,6 +99,17 @@ class App extends React.Component{
             )
         })
     }
+    renderProfile = () => {
+        this.setState(
+            {
+                pageView: "profile"
+            }
+        )
+    }
+
+    renderFunction = (pageViewComponent) => {
+        this.render(pageViewComponent)
+    }
 
     // ------ SETTING STATE TO FORM INPUT ------
     handleChange = (e) => {
@@ -129,31 +133,44 @@ class App extends React.Component{
 
     // ------ RENDER ------
     render = () => {
-        return <div>
-            <CreateAccount
-                createAccount={this.createAccount}
-                handleChange={this.handleChange}
-            ></CreateAccount>
-            <LoginForm
+        if (this.state.loggedIn === true) {
+            return <ProfileView></ProfileView>
+        } else {
+            return <LandingView
                 handleChange={this.handleChange}
                 login={this.login}
-            ></LoginForm>
-            <UserProfile
-                currentUser={this.state.currentUser}
-            ></UserProfile>
-            <GridView
-                allPosts={this.state.allPosts}
-                deletePost={this.deletePost}
-                handleChange={this.handleChange}
-                editPost={this.editPost}
-            ></GridView>
-            <NewPostForm
-                handleChange={this.handleChange}
-                createPost={this.createPost}
-            ></NewPostForm>
-            <button onClick={this.logout}>Log Out</button>
-        </div>
+            ></LandingView>
+        }
     }
+
+
+
+    // render = () => {
+    //     return <div>
+    //         <CreateAccount
+    //             createAccount={this.createAccount}
+    //             handleChange={this.handleChange}
+    //         ></CreateAccount>
+    //         <LoginForm
+    //             handleChange={this.handleChange}
+    //             login={this.login}
+    //         ></LoginForm>
+    //         <UserProfile
+    //             currentUser={this.state.currentUser}
+    //         ></UserProfile>
+    //         <GridView
+    //             allPosts={this.state.allPosts}
+    //             deletePost={this.deletePost}
+    //             handleChange={this.handleChange}
+    //             editPost={this.editPost}
+    //         ></GridView>
+    //         <NewPostForm
+    //             handleChange={this.handleChange}
+    //             createPost={this.createPost}
+    //         ></NewPostForm>
+    //         <button onClick={this.logout}>Log Out</button>
+    //     </div>
+    // }
 }
 
 ReactDOM.render(
