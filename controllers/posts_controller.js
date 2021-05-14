@@ -30,24 +30,47 @@ posts.post('/', (req, res) => {
 })
 
 // ------ UPDATE POST ------
+// Why don't we just query the user db as above in create post route, THEN find the post by it's id and
+
 posts.put('/:id', (req, res) => {
-    Post.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {
-            new: true
-        },
-        (err, updatedPost) => {
-            if (err) {
-                console.log(err)
-            } else {
-                Post.find({}, (error, allPosts) => {
-                    res.json(allPosts)
-                })
+    User.findById(req.session.currentUser._id, (err, foundUser) => {
+        Post.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true
+            },
+            (err, updatedPost) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    Post.findById(req.params.id, (error, foundPost) => {
+                        res.json(foundPost)
+                    })
+                }
             }
-        }
-    )
+        )
+    })
 })
+
+// posts.put('/:id', (req, res) => {
+//     Post.findByIdAndUpdate(
+//         req.params.id,
+//         req.body,
+//         {
+//             new: true
+//         },
+//         (err, updatedPost) => {
+//             if (err) {
+//                 console.log(err)
+//             } else {
+//                 Post.find({}, (error, allPosts) => {
+//                     res.json(allPosts)
+//                 })
+//             }
+//         }
+//     )
+// })
 
 // ------ DELETE POST ------
 posts.delete('/:id', (req, res) => {

@@ -1,7 +1,9 @@
 class LandingView extends React.Component{
     render = () => {
         return <div className="profile-page">
-            <h1>INSTASNAP LOGO GOES HERE</h1>
+            <header>
+                <img src="../../../img/instasnap-horiz-logo.png" alt="instasnap logo" />
+            </header>
             <LoginForm
                 handleChange1={this.props.handleChange}
                 login1={this.props.login}

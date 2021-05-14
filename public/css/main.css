@@ -31,7 +31,19 @@ input[type=submit]:hover {
 ========================== MOBILE ============================*/
 
 /* @media only screen and (min-width: 576) {} */
-  /*----- PROFILE VIEW ------*/
+ /*----- LANDING VIEW ------*/
+
+ header {
+     text-align: center;
+     margin-bottom: 30px;
+ }
+
+ header img {
+
+ }
+
+
+ /*----- PROFILE VIEW ------*/
 
   .user-profile {
       text-align: center;

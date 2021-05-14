@@ -85,6 +85,7 @@ class App extends React.Component{
             { new: true }
         ).then(
             (response) => {
+                console.log("Response from editPost axios call: " + response.data);
                 this.setState(
                     {
                         allPosts: response.data
