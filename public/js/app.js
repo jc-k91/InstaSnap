@@ -187,6 +187,7 @@ class App extends React.Component{
                     handleChange={this.handleChange}
                     search={this.search}
                     allUsers={this.state.allUsers}
+                    changeView={this.changeView}
                 ></SearchView>
             } else if (this.state.currentView === "b") {
                 return null
