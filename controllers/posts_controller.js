@@ -30,6 +30,7 @@ posts.post('/', (req, res) => {
 })
 
 // ------ UPDATE POST ------
+
 posts.put('/:id', (req, res) => {
     Post.findByIdAndUpdate(
         req.params.id,
