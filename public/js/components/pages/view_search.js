@@ -7,6 +7,7 @@ class SearchView extends React.Component{
             </form>
             <AllSearchResults
                 allUsers1={this.props.allUsers}
+                changeView1={this.props.changeView}
             ></AllSearchResults>
         </div>
     }

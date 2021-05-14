@@ -5,6 +5,7 @@ class AllSearchResults extends React.Component{
                 this.props.allUsers1.map((user) => {
                     return <Result
                         user={user}
+                        changeView2={this.props.changeView1}
                     ></Result>
                 })
             }
