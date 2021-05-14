@@ -1,6 +1,6 @@
 // props needed:
 //     allPosts to render each individual post into a grid (probably just the image for each post; like IG grid view)
-
+// this.props.userPosts is coming from view_profile page in the pages folder
 class GridView extends React.Component {
     state = {
         userPosts: this.props.userPosts
