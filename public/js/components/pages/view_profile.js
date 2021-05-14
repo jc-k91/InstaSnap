@@ -14,6 +14,7 @@ class ProfileView extends React.Component{
     }
     render = () => {
         return <div className="profile-page">
+            <button onClick={this.props.changeView} value="search">Search</button>
             <button onClick={this.props.logout}>Log Out</button>
             <UserProfile
                 currentUser1={this.props.currentUser}
