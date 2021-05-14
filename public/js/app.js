@@ -2,8 +2,8 @@ class App extends React.Component{
     state = {
         loggedIn: false,
         currentView: "profile",
-        allUsers: [],
         currentUser: {},
+        allUsers: [],
         username: 'jesse',// DELETE FOR FULL PRODUCTION DEPLOYMENT
         password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
@@ -95,7 +95,7 @@ class App extends React.Component{
     }
     deletePost = (e) => {
         e.preventDefault()
-        // console.log(e.target.value) // What the Farquad. This won't pull the value attritube for some reason...
+        // console.log(e.target.value) // What the Farquad. This won't pull the value attribute for some reason...
         axios.delete(
             '/posts/' + e.target.getAttribute('value'),
             (err, deletedPost) => {
@@ -119,6 +119,26 @@ class App extends React.Component{
         )
     }
 
+    // ------ SEARCH ------
+    search = (e) => {
+        e.preventDefault()
+        axios.get(
+            '/users/' + this.state.query
+        ).then((response) => {
+            console.log(response.data[0]);
+            if (response.data[0]) {
+                this.setState(
+                    {
+                        allUsers: response.data
+                    }
+                )
+            } else {
+                alert('no user found')
+            }
+        })
+    }
+
+
     // ------ SETTING STATE TO FORM INPUT ------
     handleChange = (e) => {
         this.setState(
@@ -139,6 +159,13 @@ class App extends React.Component{
         })
     }
 
+    changeView = (e) => {
+        this.setState(
+            {
+                currentView: e.target.value
+            }
+        )
+    }
 
     // ------ RENDER ------
     render = () => {
@@ -154,8 +181,12 @@ class App extends React.Component{
                     deletePost={this.deletePost}
                 ></ProfileView>
         /* RENDER OTHER PAGE VIEWS HERE */
-            } else if (this.state.currentView === "a") {
-                return null
+            } else if (this.state.currentView === "search") {
+                return <SearchView
+                    handleChange={this.handleChange}
+                    search={this.search}
+                    allUsers={this.state.allUsers}
+                ></SearchView>
             } else if (this.state.currentView === "b") {
                 return null
             } else if (this.state.currentView === "c") {
