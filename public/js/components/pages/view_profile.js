@@ -29,6 +29,9 @@ class ProfileView extends React.Component{
             ></NewPostForm>
             <PostEach
                 activePost={this.state.activePost}
+                editPost1={this.props.editPost}
+                handleChange1={this.props.handleChange}
+                deletePost1={this.props.deletePost}
             ></PostEach>
         </div>
     }

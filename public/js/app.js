@@ -150,6 +150,8 @@ class App extends React.Component{
                     changeView={this.changeView}
                     handleChange={this.handleChange}
                     createPost={this.createPost}
+                    editPost={this.editPost}
+                    deletePost={this.deletePost}
                 ></ProfileView>
         /* RENDER OTHER PAGE VIEWS HERE */
             } else if (this.state.currentView === "a") {

@@ -3,7 +3,7 @@
 
 class EditForm extends React.Component {
     render = () => {
-        return <form onSubmit={this.props.editPost} name={this.props.post._id}>
+        return <form onSubmit={this.props.editPost2} name={this.props.activePost1._id}>
             <input
                 type="text"
                 name="author"
@@ -13,18 +13,19 @@ class EditForm extends React.Component {
                 type="text"
                 name="image"
                 placeholder="Image URL"
-                onKeyUp={this.props.handleChange}
+                onKeyUp={this.props.handleChange2}
             /><br/>
             <input
                 type="text"
                 name="caption"
                 placeholder="Start typing your caption here"
-                onKeyUp={this.props.handleChange}
+                onKeyUp={this.props.handleChange2}
             /><br/>
             <input
                 type="submit"
                 value="Submit Changes"
             />
+            <button onClick={this.props.deletePost2}>Delete Post</button>
         </form>
     }
 }
