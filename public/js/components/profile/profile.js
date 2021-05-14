@@ -4,10 +4,10 @@
 class UserProfile extends React.Component {
     render = () => {
       return <section className="user-profile ">
-        <h2>{this.props.currentUser.username}</h2>
-        <img src={this.props.currentUser.profilePic} alt={this.props.currentUser.username} />
+        <h2>{this.props.currentUser1.username}</h2>
+        <img src={this.props.currentUser1.profilePic} alt={this.props.currentUser1.username} />
         <div>
-          <p>{this.props.currentUser.bio}</p>
+          <p>{this.props.currentUser1.bio}</p>
         </div>
       </section>
     }
