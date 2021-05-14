@@ -1,36 +1,30 @@
 // props needed:
 //     allPosts to render each individual post into a grid (probably just the image for each post; like IG grid view)
-
+// this.props.userPosts is coming from view_profile page in the pages folder
 class GridView extends React.Component {
     state = {
-        userPosts: this.props.userPosts,
-        activePost: {}
+        userPosts: this.props.userPosts
     }
     findPost = (e) => {
-        console.log("clicked")
-        for (let post of this.state.userPosts) {
-            if (post._id === e.target.key) {
-                this.setState(
-                    {
-                        activePost: post
-                    }
-                )
+        let userPosts = this.state.userPosts
+        console.log(`the click target is ` + e.target)
+        console.log(`the target's value is: ` + e.target.getAttribute('value'))
+        for (let i = 0; i < userPosts.length; i++) {
+            if (userPosts[i]._id === e.target.getAttribute('value')) {
+                this.props.updateActivePost(userPosts[i])
             }
         }
-        document.getElementById('post-modal').classList.toggle('hide')
+        // document.getElementById('post-modal').classList.toggle('hide')
     }
     render = () => {
         return <section className="post-grid">
             {
                 this.props.userPosts.map((post) => {
                     return <div className="post-square" key={post._id} onClick={this.findPost} >
-                        <img src={post.image} />
+                        <img src={post.image} value={post._id} />
                     </div>
                 })
             }
-            <PostEach
-                activePost={this.state.activePost}
-            ></PostEach>
         </section>
     }
 }

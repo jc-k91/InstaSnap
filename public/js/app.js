@@ -3,7 +3,9 @@ class App extends React.Component{
         loggedIn: false,
         currentView: "profile",
         allUsers: [],
-        currentUser: {}
+        currentUser: {},
+        username: 'jesse',// DELETE FOR FULL PRODUCTION DEPLOYMENT
+        password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
     // ========== FUNCTIONS ==========
     // ------ USER ACCOUNT ------
@@ -21,6 +23,8 @@ class App extends React.Component{
         )
     }
     // ------ SESSION ------
+    // in setState, the author part makes it so the 'author' of a session will always be that person's username
+    // !== {} checks to make sure there IS a currentUser (not an empty object)
     login = (e) => {
         e.preventDefault()
         axios.post(
@@ -52,6 +56,8 @@ class App extends React.Component{
     }
 
     // ------ POSTS ------
+    // Had an issue with userResponse - after console logging it, determined we needed userResponse.data AND it was returning an array so we added [0] to return first result
+    // double axios call reppin up in here
     createPost = (e) => {
         e.preventDefault()
         axios.post(
@@ -103,16 +109,14 @@ class App extends React.Component{
             )
         })
     }
+    // render pageview "profile" to show user's profile
+    // once we have other views, we can use this
     renderProfile = () => {
         this.setState(
             {
-                pageView: "profile"
+                currentView: "profile"
             }
         )
-    }
-
-    renderFunction = (pageViewComponent) => {
-        this.render(pageViewComponent)
     }
 
     // ------ SETTING STATE TO FORM INPUT ------
