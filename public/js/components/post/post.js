@@ -13,6 +13,7 @@ class PostEach extends React.Component {
                 <h4>{this.props.activePost.author}</h4>
                 <img src={this.props.activePost.image} />
                 <p>{this.props.activePost.caption}</p>
+                <EditForm></EditForm>
             </div>
         </section>
     }
