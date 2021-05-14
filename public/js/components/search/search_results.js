@@ -6,6 +6,7 @@ class AllSearchResults extends React.Component{
                     return <Result
                         user={user}
                         changeView2={this.props.changeView1}
+                        key={user._id}
                     ></Result>
                 })
             }
