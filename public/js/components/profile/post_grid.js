@@ -7,8 +7,6 @@ class GridView extends React.Component {
     }
     findPost = (e) => {
         let userPosts = this.state.userPosts
-        console.log(`the click target is ` + e.target)
-        console.log(`the target's value is: ` + e.target.getAttribute('value'))
         for (let i = 0; i < userPosts.length; i++) {
             if (userPosts[i]._id === e.target.getAttribute('value')) {
                 this.props.updateActivePost(userPosts[i])

@@ -12,10 +12,7 @@ const userSchema = new Schema({
     bio: String,
     followers: Array,
     following: Array,
-    posts: {
-        type: Array,
-        default: []
-    }
+    posts: [{type: Schema.Types.ObjectId, ref: "Post"}]
 })
 const User = mongoose.model('User', userSchema)
 

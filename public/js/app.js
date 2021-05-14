@@ -84,13 +84,18 @@ class App extends React.Component{
             this.state,
             { new: true }
         ).then(
-            (response) => {
-                console.log("Response from editPost axios call: " + response.data);
-                this.setState(
-                    {
-                        allPosts: response.data
-                    }
-                )
+            (postResponse) => {
+                // console.log("Response from editPost axios call: " + response.data);
+                axios.get(
+                    '/users/' + this.state.currentUser._id
+                ).then((userResponse) => {
+                    console.log(userResponse);
+                    this.setState(
+                        {
+                            allPosts: postResponse.data
+                        }
+                    )
+                })
             }
         )
     }

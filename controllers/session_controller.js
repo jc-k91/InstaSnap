@@ -34,7 +34,7 @@ sessions.post('/login', (req, res) => {
                 }
             }
         }
-    )
+    ).populate('posts')
 })
 
 // ------ DELETE SESSION (LOGOUT) ------
