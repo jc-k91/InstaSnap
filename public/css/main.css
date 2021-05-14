@@ -39,6 +39,7 @@ input[type=submit]:hover {
 
   .user-profile {
       text-align: center;
+      margin: 50px;
   }
 
   .user-profile h2 {
@@ -63,10 +64,13 @@ input[type=submit]:hover {
   }
 
   .post-grid img {
-    width: 300px;
-    height: 300px;
+    width: 50vmin;
+    height: 50vmin;
+    min-width: 200px;
+    min-height: 200px;
     object-fit: cover;
     margin: 10px;
+
   }
 
 /*----- PROFILE VIEW - POST EACH MODAL ------*/
