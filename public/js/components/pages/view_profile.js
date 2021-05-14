@@ -16,16 +16,16 @@ class ProfileView extends React.Component{
         return <div className="profile-page">
             <button onClick={this.props.logout}>Log Out</button>
             <UserProfile
-                currentUser={this.props.currentUser}
+                currentUser1={this.props.currentUser}
             ></UserProfile>
             <GridView
-                userPosts={this.props.currentUser.posts}
+                currentUser1={this.props.currentUser}
                 updateActivePost={this.showActivePost}
             ></GridView>
             <NewPostForm
-                handleChange={this.props.handleChange}
-                createPost={this.props.createPost}
-                currentUser={this.props.currentUser}
+                handleChange1={this.props.handleChange}
+                createPost1={this.props.createPost}
+                currentUser1={this.props.currentUser}
             ></NewPostForm>
             <PostEach
                 activePost={this.state.activePost}

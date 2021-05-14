@@ -1,9 +1,9 @@
 // props needed:
 //     allPosts to render each individual post into a grid (probably just the image for each post; like IG grid view)
-// this.props.userPosts is coming from view_profile page in the pages folder
+// this.props.userPosts (changed to this.props.currentUser1.posts) is coming from view_profile page in the pages folder
 class GridView extends React.Component {
     state = {
-        userPosts: this.props.userPosts
+        userPosts: this.props.currentUser1.posts
     }
     findPost = (e) => {
         let userPosts = this.state.userPosts
@@ -19,7 +19,7 @@ class GridView extends React.Component {
     render = () => {
         return <section className="post-grid">
             {
-                this.props.userPosts.map((post) => {
+                this.props.currentUser1.posts.map((post) => {
                     return <div className="post-square" key={post._id} onClick={this.findPost} >
                         <img src={post.image} value={post._id} />
                     </div>
