@@ -6,7 +6,7 @@ class LoginForm extends React.Component {
             }
         )
     }
-    login = (e) => {
+    login = (e) => { // in setState, the author part makes it so the 'author' of a session will always be that person's username
         e.preventDefault()
         axios.post(
             '/session/login',
@@ -17,7 +17,8 @@ class LoginForm extends React.Component {
                     {
                         loggedInUser: response.data.currentUser,
                         sessionInfo: response.data,
-                        currentView: "profile"
+                        currentView: "profile",
+                        author: response.data.currentUser.username
                     }
                 )
             // }

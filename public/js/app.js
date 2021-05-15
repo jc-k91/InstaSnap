@@ -11,9 +11,8 @@ class App extends React.Component{
         )
     }
     // ------ SESSION ------
-    // in setState, the author part makes it so the 'author' of a session will always be that person's username
     // !== {} checks to make sure there IS a currentUser (not an empty object)
-    logout = () => {
+    logout = () => { // NEED TO MOVE THIS 
         axios.delete(
             '/session'
         ).then((response) => {
