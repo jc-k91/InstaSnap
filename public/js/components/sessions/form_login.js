@@ -13,6 +13,7 @@ class LoginForm extends React.Component {
             this.state
         ).then((response) => {
             if (response.data.currentUser) {
+                console.log(response)
                 this.props.liftStateToApp2(
                     {
                         loggedInUser: response.data.currentUser,

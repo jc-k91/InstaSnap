@@ -23,7 +23,6 @@ class NewPostForm extends React.Component{
             //     '/users/' + this.props.loggedInUser2._id
             // ).then((userResponse) => {
                 const updatedUser = response.data
-                console.log(updatedUser)
                 this.setState(
                     {
                         image: "",
@@ -32,7 +31,7 @@ class NewPostForm extends React.Component{
                 )
                 this.props.liftStateToApp2(
                     {
-                        loggedInUser: response.data
+                        loggedInUser: updatedUser
                     }
                 )
             // })
