@@ -17,6 +17,7 @@ class LoginForm extends React.Component {
                 this.props.liftStateToApp2(
                     {
                         loggedInUser: response.data.currentUser,
+                        activeProfile: response.data.currentUser,
                         sessionInfo: response.data,
                         currentView: "profile",
                         author: response.data.currentUser.username

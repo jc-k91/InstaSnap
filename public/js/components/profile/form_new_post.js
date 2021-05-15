@@ -1,6 +1,6 @@
 class NewPostForm extends React.Component{
     state = {
-        loggedInUser: this.props.loggedInUser2,
+        thisUser: this.props.loggedInUser2,
         image: "",
         caption: ""
     }

@@ -3,23 +3,23 @@
 // username, profilePic, bio
 class UserProfile extends React.Component {
     state = {
-        loggedInUser: this.props.loggedInUser2
+        renderedProfile: this.props.activeProfile2
     }
     componentDidUpdate = (prev) => {
-        if (this.props.loggedInUser2 !== prev.loggedInUser2) {
+        if (this.props.activeProfile2 !== prev.activeProfile2) {
             this.setState(
                 {
-                    loggedInUser: this.props.loggedInUser2
+                    renderedProfile: this.props.activeProfile2
                 }
             )
         }
     }
     render = () => {
       return <section className="user-profile ">
-        <h2>{this.state.loggedInUser.username}</h2>
-        <img src={this.state.loggedInUser.profilePic} alt={this.state.loggedInUser.username} />
+        <h2>{this.state.renderedProfile.username}</h2>
+        <img src={this.state.renderedProfile.profilePic} alt={this.state.renderedProfile.username} />
         <div>
-          <p>{this.state.loggedInUser.bio}</p>
+          <p>{this.state.renderedProfile.bio}</p>
         </div>
       </section>
     }
