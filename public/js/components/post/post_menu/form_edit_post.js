@@ -3,7 +3,7 @@
 
 class EditForm extends React.Component {
     render = () => {
-        return <form onSubmit={this.props.editPost2} name={this.props.activePost1._id}>
+        return <form onSubmit={this.props.editPost2} name={this.props.activePost1._id} className="hide">
             <input
                 type="text"
                 name="author"

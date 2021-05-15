@@ -10,10 +10,6 @@ h1, h2, h3, h4 {
   color: var(--orange);
 }
 
-.hide {
-    display: none;
-}
-
 #main-container {
   margin: 50px;
 }
@@ -39,11 +35,6 @@ input[type=submit]:hover {
      margin-bottom: 30px;
  }
 
-.profile-page{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
  /*----- PROFILE VIEW ------*/
 
   .user-profile {
@@ -65,7 +56,6 @@ input[type=submit]:hover {
 
   /*----- PROFILE VIEW - POST GRID ------*/
 
-
   .post-grid {
     display: flex;
     flex-flow: row wrap;
@@ -78,6 +68,45 @@ input[type=submit]:hover {
     object-fit: cover;
     margin: 10px;
   }
+
+/*----- PROFILE VIEW - POST EACH MODAL ------*/
+
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-modal-background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    margin-top: -50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-modal-background button {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.post-modal {
+    background: whitesmoke;
+    width: 90%;
+    padding: 20px;
+}
+
+.post-modal img {
+    width: 50%;
+    height: auto;
+    margin: 10px auto;
+}
+
 
 /*==============================================================
 ========================= TABLET ==============================*/
@@ -129,4 +158,11 @@ input[type=submit]:hover {
 
 @media only screen and (min-width: 992px) {
 
+}
+
+/*==============================================================
+================= ONE RULE TO RULE THEM ALL ===================*/
+
+.hide {
+    display: none;
 }
