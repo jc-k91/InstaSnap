@@ -12,30 +12,29 @@ const User = require('../models/user.js')
 // ========== ROUTES ==========
 // ------ CREATE SESSION (LOGIN) ------
 sessions.post('/login', (req, res) => {
-    User.
-        findOne(
-            { username: req.body.username.toLowerCase() },
-            (err, foundUser) => {
-                // IF ERROR
-                if (err) {
-                    console.log(err)
-                // IF USERNAME IS NOT FOUND
-                } else if ( !foundUser ) {
-                    res.json("Invalid")
-                // IF USERNAME IS FOUND
+    User.findOne(
+        { username: req.body.username.toLowerCase() },
+        (err, foundUser) => {
+            // IF ERROR
+            if (err) {
+                console.log(err)
+            // IF USERNAME IS NOT FOUND
+            } else if ( !foundUser ) {
+                res.json("Invalid")
+            // IF USERNAME IS FOUND
+            } else {
+                // IF THE PASSWORD IS CORRECT
+                if (bcrypt.compareSync(req.body.password, foundUser.password)) {
+                    console.log('==================== ' + req.body.username +  ' LOGGED IN ====================')
+                    req.session.currentUser = foundUser
+                    res.json(req.session)
+                // IF THE PASSWORD IS INCORRECT
                 } else {
-                    // IF THE PASSWORD IS CORRECT
-                    if (bcrypt.compareSync(req.body.password, foundUser.password)) {
-                        console.log('==================== ' + req.body.username +  ' LOGGED IN ====================')
-                        req.session.currentUser = foundUser
-                        res.json(req.session)
-                    // IF THE PASSWORD IS INCORRECT
-                    } else {
-                        res.json("Invalid")
-                    }
+                    res.json("Invalid")
                 }
             }
-        ).populate('posts')
+        }
+    ).populate('posts')
 })
 
 // ------ VALIDATE SESSION ------
