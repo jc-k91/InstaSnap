@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
             '/session/login',
             this.state
         ).then((response) => {
-            // if (response.currentUser) {
+            if (response.data.currentUser) {
                 this.props.liftStateToApp2(
                     {
                         loggedInUser: response.data.currentUser,
@@ -21,7 +21,10 @@ class LoginForm extends React.Component {
                         author: response.data.currentUser.username
                     }
                 )
-            // }
+            } else if (response.data === "Invalid") {
+                alert('Invalid login credentials. Please try again.')
+
+            }
         })
     }
     render = () => {
