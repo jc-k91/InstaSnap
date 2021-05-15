@@ -1,9 +1,5 @@
 class App extends React.Component{
     state = {
-        loggedIn: false,
-        currentView: "profile",
-        currentUser: {},
-        loggedInUser: {}
         // username: 'jesse',// DELETE FOR FULL PRODUCTION DEPLOYMENT
         // password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
@@ -132,13 +128,11 @@ class App extends React.Component{
     // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
         console.log('Page loaded')
-        // axios.get('/posts').then((response) => {
-        //     this.setState(
-        //         {
-        //             allPosts: response.data
-        //         }
-        //     )
-        // })
+        this.setState(
+            {
+                // NOTHING TO ADD YET
+            }
+        )
     }
 
     changeView = (e) => {
@@ -159,7 +153,7 @@ class App extends React.Component{
             if (this.state.currentView === "profile") {
                 return <ProfileView
                     logout={this.logout}
-                    currentUser={this.state.currentUser}
+                    currentUser={this.state.loggedInUser}
                     changeView={this.changeView}
                     handleChange={this.handleChange}
                     createPost={this.createPost}
