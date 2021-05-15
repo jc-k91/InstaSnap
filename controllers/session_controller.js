@@ -38,12 +38,18 @@ sessions.post('/login', (req, res) => {
         ).populate('posts')
 })
 
+// ------ VALIDATE SESSION ------
+sessions.get('/validate', (req, res) => {
+    res.json(req.session)
+})
+
 // ------ DELETE SESSION (LOGOUT) ------
 sessions.delete('/', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
             console.log(err)
         }
+        console.log('==================== SESSION DESTROYED ====================')
         res.json(req.session)
     })
 })

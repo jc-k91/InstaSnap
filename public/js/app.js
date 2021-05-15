@@ -19,8 +19,8 @@ class App extends React.Component{
         ).then((response) => {
             this.setState(
                 {
-                    loggedIn: false,
-                    currentUser: {}
+                    loggedInUser: response.data.currentUser,
+                    sessionInfo: response.data
                 }
             )
         })
@@ -128,6 +128,19 @@ class App extends React.Component{
     // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
         console.log('Page loaded')
+        axios.get(
+            '/session/validate'
+        ).then((response) => {
+            if (response.data.currentUser) {
+                this.setState(
+                    {
+                        loggedInUser: response.data.currentUser,
+                        sessionInfo: response.data,
+                        currentView: "profile"
+                    }
+                )
+            }
+        })
         this.setState(
             {
                 // NOTHING TO ADD YET
@@ -149,7 +162,9 @@ class App extends React.Component{
 
     // ------ RENDER ------
     render = () => {
+        /* IF SESSION IS DETECTED */
         if (this.state.sessionInfo) {
+            /* PROFILE VIEW */
             if (this.state.currentView === "profile") {
                 return <ProfileView
                     logout={this.logout}
@@ -160,7 +175,7 @@ class App extends React.Component{
                     editPost={this.editPost}
                     deletePost={this.deletePost}
                 ></ProfileView>
-        /* RENDER OTHER PAGE VIEWS HERE */
+            /* SEARCH VIEW */
             } else if (this.state.currentView === "search") {
                 return <SearchView
                     handleChange={this.handleChange}
@@ -168,12 +183,13 @@ class App extends React.Component{
                     allUsers={this.state.allUsers}
                     changeView={this.changeView}
                 ></SearchView>
+            /* NEXT VIEW */
             } else if (this.state.currentView === "b") {
                 return null
             } else if (this.state.currentView === "c") {
                 return null
-            }
-        } else {
+            } /* LOGGED IN VIEWS END ========== */
+        } else { /* IF NO SESSION DETECTED */
             return <LandingView
                 liftStateToApp1={this.liftStateToApp}
             ></LandingView>
