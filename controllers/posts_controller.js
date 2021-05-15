@@ -18,15 +18,17 @@ posts.get('/', (req, res) => {
 
 // ------ CREATE POST ------
 posts.post('/', (req, res) => {
-    User.findById(req.session.currentUser._id, (err1, foundUser) => {
-        Post.create(req.body, (err2, createdPost) => {
+    Post.create(req.body, (err1, createdPost) => {
+        User.findById(req.session.currentUser._id, (err2, foundUser) => {
+            console.log('added post');
             foundUser.posts.unshift(createdPost)
             foundUser.save()
             console.log(foundUser.posts);
-            User.find({}, (err3, allUsers) => {
-                res.json(allUsers)
-            })
-        })
+            // User.find({}, (err3, allUsers) => {
+            //     res.json(allUsers)
+            // })
+            res.json(foundUser)
+        }).populate('posts')
     })
 })
 
