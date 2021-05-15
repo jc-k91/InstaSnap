@@ -3,20 +3,11 @@ class App extends React.Component{
         loggedIn: false,
         currentView: "profile",
         currentUser: {},
-        allUsers: [],
-        username: 'jesse',// DELETE FOR FULL PRODUCTION DEPLOYMENT
-        password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
+        // username: 'jesse',// DELETE FOR FULL PRODUCTION DEPLOYMENT
+        // password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
     // ========== FUNCTIONS ==========
     // ------ USER ACCOUNT ------
-    createAccount = () => {
-        axios.post(
-            '/users',
-            this.state
-        ).then((response) => {
-            console.log(response) // THIS IS WHERE WE SHOULD AUTOMATICALLY LOG THE USER IN WITH THE NEW USER CREDENTIALS
-        })
-    }
     deleteAccount = () => {
         axios.delete(
 
@@ -156,13 +147,14 @@ class App extends React.Component{
 
     // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
-        axios.get('/posts').then((response) => {
-            this.setState(
-                {
-                    allPosts: response.data
-                }
-            )
-        })
+        console.log('Page loaded')
+        // axios.get('/posts').then((response) => {
+        //     this.setState(
+        //         {
+        //             allPosts: response.data
+        //         }
+        //     )
+        // })
     }
 
     changeView = (e) => {
@@ -201,9 +193,8 @@ class App extends React.Component{
             }
         } else {
             return <LandingView
-                handleChange={this.handleChange}
                 login={this.login}
-                createAccount={this.createAccount}
+                handleChange={this.handleChange}
             ></LandingView>
         }
     }

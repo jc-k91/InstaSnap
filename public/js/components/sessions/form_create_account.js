@@ -1,12 +1,28 @@
 class CreateAccount extends React.Component {
+    handleFormInput = (e) => {
+        this.setState(
+            {
+                [e.target.name]: e.target.value
+            }
+        )
+    }
+    createAccount = (e) => {
+        e.preventDefault()
+        axios.post(
+            '/users',
+            this.state
+        ).then((response) => {
+            console.log(response) // THIS IS WHERE WE SHOULD AUTOMATICALLY LOG THE USER IN WITH THE NEW USER CREDENTIALS
+        })
+    }
     render = () => {
-        return <form onSubmit={this.props.createAccount1} className="form-group">
+        return <form onSubmit={this.createAccount} className="form-group">
             <h4>Create an Account</h4>
             <input
                 type="text"
                 placeholder="Username"
                 name="username"
-                onKeyUp={this.props.handleChange1}
+                onKeyUp={this.handleFormInput}
                 className="form-control"
             />
             <br/>
@@ -14,7 +30,7 @@ class CreateAccount extends React.Component {
                 type="password"
                 placeholder="Password"
                 name="password"
-                onKeyUp={this.props.handleChange1}
+                onKeyUp={this.handleFormInput}
                 className="form-control"
             />
             <br/>
@@ -22,7 +38,7 @@ class CreateAccount extends React.Component {
                 type="text"
                 placeholder="Profile Pic URL"
                 name="profilePic"
-                onKeyUp={this.props.handleChange1}
+                onKeyUp={this.handleFormInput}
                 className="form-control"
             />
             <br/>
@@ -30,7 +46,7 @@ class CreateAccount extends React.Component {
                 type="text"
                 placeholder="Bio"
                 name="bio"
-                onKeyUp={this.props.handleChange1}
+                onKeyUp={this.handleFormInput}
                 className="form-control"
             />
             <br/>
