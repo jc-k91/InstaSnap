@@ -16,7 +16,7 @@ class ProfileView extends React.Component{
             )
         })
     }
-    showActivePost = (postObject) => {
+    toggleActivePost = (postObject) => {
         this.setState(
             {
                 activePost: postObject
@@ -24,28 +24,21 @@ class ProfileView extends React.Component{
         )
         document.getElementById('post-modal').classList.toggle('hide')
     }
-    componentDidMount = () => {
-        this.setState(
-            {
-                activePost: {}
-            }
-        )
-    }
     render = () => {
         return <div className="profile-page">
             <button onClick={this.props.changeView} value="search">Search</button>
             <button onClick={this.logout}>Log Out</button>
             <UserProfile
-                currentUser1={this.props.currentUser}
+                loggedInUser2={this.props.currentUser1}
             ></UserProfile>
             <GridView
-                currentUser1={this.props.currentUser}
-                updateActivePost={this.showActivePost}
+                loggedInUser2={this.props.currentUser1}
+                toggleActivePost1={this.toggleActivePost}
             ></GridView>
             <NewPostForm
-                handleChange1={this.props.handleChange}
                 createPost1={this.props.createPost}
-                currentUser1={this.props.currentUser}
+                loggedInUser2={this.props.currentUser1}
+                liftStateToApp2={this.props.liftStateToApp1}
             ></NewPostForm>
             <PostEach
                 activePost={this.state.activePost}

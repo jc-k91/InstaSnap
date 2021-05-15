@@ -12,27 +12,6 @@ class App extends React.Component{
     }
 
     // ------ POSTS ------
-    // Had an issue with userResponse - after console logging it, determined we needed userResponse.data AND it was returning an array so we added [0] to return first result
-    // double axios call reppin up in here
-    createPost = (e) => {
-        e.preventDefault()
-        axios.post(
-            '/posts',
-            this.state
-        ).then((postResponse) => {
-            axios.get(
-                '/users/' + this.state.loggedInUser.username
-            ).then((userResponse) => {
-                this.setState(
-                    {
-                        loggedInUser: userResponse.data[0],
-                        image: "",
-                        caption: ""
-                    }
-                )
-            })
-        })
-    }
     editPost = (e) => {
         e.preventDefault()
         axios.put(
@@ -113,24 +92,29 @@ class App extends React.Component{
     // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
         console.log('Page loaded')
-        axios.get(
-            '/session/validate'
+        // axios.get(
+        //     '/session/validate'
+        // ).then((response) => {
+        //     if (response.data.currentUser) {
+        //         this.setState(
+        //             {
+        //                 loggedInUser: response.data.currentUser,
+        //                 sessionInfo: response.data,
+        //                 currentView: "profile"
+        //             }
+        //         )
+        //     }
+        // })
+        axios.delete(
+            '/session'
         ).then((response) => {
-            if (response.data.currentUser) {
-                this.setState(
-                    {
-                        loggedInUser: response.data.currentUser,
-                        sessionInfo: response.data,
-                        currentView: "profile"
-                    }
-                )
-            }
+            this.setState(
+                {
+                    loggedInUser: response.data.currentUser,
+                    sessionInfo: response.data
+                }
+            )
         })
-        this.setState(
-            {
-                // NOTHING TO ADD YET
-            }
-        )
     }
 
     changeView = (e) => {
@@ -152,7 +136,7 @@ class App extends React.Component{
             /* PROFILE VIEW */
             if (this.state.currentView === "profile") {
                 return <ProfileView
-                    currentUser={this.state.loggedInUser}
+                    currentUser1={this.state.loggedInUser}
                     changeView={this.changeView}
                     handleChange={this.handleChange}
                     createPost={this.createPost}
