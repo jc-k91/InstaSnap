@@ -20,27 +20,36 @@ sessions.post('/login', (req, res) => {
                 console.log(err)
             // IF USERNAME IS NOT FOUND
             } else if ( !foundUser ) {
-                res.send("Invalid login credentials. Is your Caps Lock on? Did you spell your username/password correctly?")
+                res.json("Invalid")
             // IF USERNAME IS FOUND
             } else {
                 // IF THE PASSWORD IS CORRECT
                 if (bcrypt.compareSync(req.body.password, foundUser.password)) {
                     console.log('==================== ' + req.body.username +  ' LOGGED IN ====================')
                     req.session.currentUser = foundUser
-                    res.json(req.session.currentUser)
+                    res.json(req.session)
                 // IF THE PASSWORD IS INCORRECT
                 } else {
-                    res.send("Invalid login credentials. Is your Caps Lock on? Did you spell your username/password correctly?")
+                    res.json("Invalid")
                 }
             }
         }
-    )
+    ).populate('posts')
+})
+
+// ------ VALIDATE SESSION ------
+sessions.get('/validate', (req, res) => {
+    res.json(req.session)
 })
 
 // ------ DELETE SESSION (LOGOUT) ------
 sessions.delete('/', (req, res) => {
-    req.session.destroy(() => {
-        res.json({})
+    req.session.destroy((err) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log('==================== SESSION DESTROYED ====================')
+        res.json(req.session)
     })
 })
 

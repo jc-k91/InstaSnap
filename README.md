@@ -13,6 +13,11 @@ We brainstormed ideas for how to go about showing only certain pages without ren
  2. Conditionals embedded into the render function of a component.
 We opted for the latter and created the necessary page components so as to not clutter up the App component's render function.
 
+#### Data Structure
+Without going into too much detail, we spent a lot of time trying to arrange our data structure for our db documents in such a way that would allow us to make the fewest API calls as possible.<br><br>
+
+After speaking with a recent GA grad, we found the best way to structure our data would be to add refs in our mongoose schemas and use .populate() in our API calls to grab all of the pertinent data at once (e.g. in order to pull a user and all of their posts and each of those post's comments, we only have to make a single API call to the user and populate the post refs with their respective objects, and populate each post's comment refs with their respective objects)
+
 ## User Stories
 #### Core
 - As a user, my homepage should show me a post feed.
@@ -61,6 +66,13 @@ We opted for the latter and created the necessary page components so as to not c
 
 ## Solved Problems
 - Delete button didn't work until we changed e.target.value in app.js to e.target.getAttribute('value')
+- We had some issues conceptualizing our data structures and how to nest models within one another while dynamically updating the parent document according to changes made in child documents.<br><br>
+
+We reached out to a recent GA grad who was able to show us the (very very basic) ropes of using .populate() and properly calling refs within the models. This approach caused another bug where adding a new post wouldn't rewrite the grid-view with said new post.<br><br>
+
+After digging through a ton of React, MongoDB, and Mongoose docs plus a bajillion StackOverflow threads, we were able to get everything figured out (shoutout to componentDidUpdate).
+
+
 
 #### Reflection Section
 - All three group members in different time zones

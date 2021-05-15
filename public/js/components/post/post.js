@@ -5,9 +5,15 @@ class PostEach extends React.Component {
     toggleMenu = () => {
         document.getElementById('post-menu').classList.toggle('hide')
     }
+    toggleHide = (e) => {
+        const modal = document.querySelector('.post-modal-background')
+        if (event.target.classList.contains('post-modal-background')) {
+            modal.classList.toggle('hide')
+        }
+    }
     render = () => {
-        return <section id="post-modal" className="post-modal-background hide">
-        <button onClick={this.toggleMenu}>THIS IS THE MENU TOGGLE</button>
+        return <section id="post-modal" className="post-modal-background hide" onClick={this.toggleHide}>
+        <button onClick={this.toggleMenu} className="menu-btn">THIS IS THE MENU TOGGLE</button>
         <PostMenu></PostMenu>
             <div className="post-modal">
                 <h4>{this.props.activePost.author}</h4>
