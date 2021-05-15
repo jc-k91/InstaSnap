@@ -138,6 +138,7 @@ class App extends React.Component{
             if (this.state.currentView === "profile") {
                 return <ProfileView
                     loggedInUser1={this.state.loggedInUser}
+                    activeProfile1={this.state.activeProfile}
                     changeView={this.changeView}
                     handleChange={this.handleChange}
                     createPost={this.createPost}

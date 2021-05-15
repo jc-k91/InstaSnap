@@ -33,10 +33,10 @@ class ProfileView extends React.Component{
             <button onClick={this.props.changeView} value="search">Search</button>
             <button onClick={this.logout}>Log Out</button>
             <UserProfile
-                loggedInUser2={this.props.loggedInUser1}
+                activeProfile2={this.props.activeProfile1}
             ></UserProfile>
             <GridView
-                loggedInUser2={this.props.loggedInUser1}
+                activeProfile2={this.props.activeProfile1}
                 toggleActivePost1={this.toggleActivePost}
             ></GridView>
             <NewPostForm
