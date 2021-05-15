@@ -5,12 +5,14 @@ class UserProfile extends React.Component {
     state = {
         loggedInUser: this.props.loggedInUser2
     }
-    componentDidMount = () => {
-        this.setState(
-            {
-                loggedInUser: this.props.loggedInUser2
-            }
-        )
+    componentDidUpdate = (prev) => {
+        if (this.props.loggedInUser2 !== prev.loggedInUser2) {
+            this.setState(
+                {
+                    loggedInUser: this.props.loggedInUser2
+                }
+            )
+        }
     }
     render = () => {
       return <section className="user-profile ">

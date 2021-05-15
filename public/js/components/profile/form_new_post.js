@@ -1,5 +1,6 @@
 class NewPostForm extends React.Component{
     state = {
+        loggedInUser: this.props.loggedInUser2,
         image: "",
         caption: ""
     }
@@ -14,27 +15,27 @@ class NewPostForm extends React.Component{
     // double axios call reppin up in here
     createPost = (e) => {
         e.preventDefault()
-        console.log(this.props.loggedInUser2);
         axios.post(
             '/posts',
             this.state
-        ).then((postResponse) => {
-            axios.get(
-                '/users/' + this.props.loggedInUser2._id
-            ).then((userResponse) => {
+        ).then((response) => {
+            // axios.get(
+            //     '/users/' + this.props.loggedInUser2._id
+            // ).then((userResponse) => {
+                const updatedUser = response.data
+                console.log(updatedUser)
                 this.setState(
                     {
-                        // loggedInUser: userResponse.data[0],
                         image: "",
                         caption: ""
                     }
                 )
                 this.props.liftStateToApp2(
                     {
-                        loggedInUser: userResponse.data
+                        loggedInUser: response.data
                     }
                 )
-            })
+            // })
         })
     }
     render = () => {
@@ -44,7 +45,6 @@ class NewPostForm extends React.Component{
                 name="image"
                 placeholder="Image URL"
                 onKeyUp={this.handleFormInput}
-                defaultValue={this.state.image}
             /><br/>
             <input
                 type="text"
@@ -56,7 +56,6 @@ class NewPostForm extends React.Component{
                 type="submit"
                 value="Create Post"
             />
-
         </form>
     }
 }
