@@ -105,6 +105,7 @@ class App extends React.Component{
         //         )
         //     }
         // })
+        // FORCES LOGOUT ON PAGE LOAD/RELOAD
         axios.delete(
             '/session'
         ).then((response) => {
