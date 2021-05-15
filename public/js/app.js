@@ -60,24 +60,7 @@ class App extends React.Component{
         )
     }
 
-    // ------ SEARCH ------
-    search = (e) => {
-        e.preventDefault()
-        axios.get(
-            '/users/' + this.state.query
-        ).then((response) => {
-            console.log(response.data[0]);
-            if (response.data[0]) {
-                this.setState(
-                    {
-                        allUsers: response.data
-                    }
-                )
-            } else {
-                alert('no user found')
-            }
-        })
-    }
+
 
 
     // ------ SETTING STATE TO FORM INPUT ------
@@ -121,7 +104,7 @@ class App extends React.Component{
     changeView = (e) => {
         this.setState(
             {
-                currentView: e.target.value
+                currentView: e.target.getAttribute('value')
             }
         )
     }
@@ -139,7 +122,7 @@ class App extends React.Component{
                 return <ProfileView
                     loggedInUser1={this.state.loggedInUser}
                     activeProfile1={this.state.activeProfile}
-                    changeView={this.changeView}
+                    changeView1={this.changeView}
                     handleChange={this.handleChange}
                     createPost={this.createPost}
                     editPost={this.editPost}
@@ -150,9 +133,8 @@ class App extends React.Component{
             } else if (this.state.currentView === "search") {
                 return <SearchView
                     handleChange={this.handleChange}
-                    search={this.search}
-                    allUsers={this.state.allUsers}
-                    changeView={this.changeView}
+                    changeView1={this.changeView}
+                    liftStateToApp1={this.liftStateToApp}
                 ></SearchView>
             /* NEXT VIEW */
             } else if (this.state.currentView === "b") {

@@ -30,7 +30,7 @@ class ProfileView extends React.Component{
     }
     render = () => {
         return <div className="profile-page">
-            <button onClick={this.props.changeView} value="search">Search</button>
+            <button onClick={this.props.changeView1} value="search">Search</button>
             <button onClick={this.logout}>Log Out</button>
             <UserProfile
                 activeProfile2={this.props.activeProfile1}
