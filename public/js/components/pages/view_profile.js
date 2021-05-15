@@ -4,7 +4,19 @@ class ProfileView extends React.Component{
     state = {
         activePost: {}
     }
-    showActivePost = (postObject) => {
+    logout = () => { // PARTIALLY REFACTORED; NEED TO MOVE WHEREVER LOGOUT BUTTON GOES
+        axios.delete(
+            '/session'
+        ).then((response) => {
+            this.props.liftStateToApp1(
+                {
+                    loggedInUser: response.data.currentUser,
+                    sessionInfo: response.data
+                }
+            )
+        })
+    }
+    toggleActivePost = (postObject) => {
         this.setState(
             {
                 activePost: postObject
@@ -12,21 +24,26 @@ class ProfileView extends React.Component{
         )
         document.getElementById('post-modal').classList.toggle('hide')
     }
+    liftStateToProfileView = (stateObject) => {
+        console.log('ProfileView state updated');
+        this.setState(stateObject)
+    }
     render = () => {
         return <div className="profile-page">
             <button onClick={this.props.changeView} value="search">Search</button>
-            <button onClick={this.props.logout}>Log Out</button>
+            <button onClick={this.logout}>Log Out</button>
             <UserProfile
-                currentUser1={this.props.currentUser}
+                loggedInUser2={this.props.loggedInUser1}
             ></UserProfile>
             <GridView
-                currentUser1={this.props.currentUser}
-                updateActivePost={this.showActivePost}
+                loggedInUser2={this.props.loggedInUser1}
+                toggleActivePost1={this.toggleActivePost}
             ></GridView>
             <NewPostForm
-                handleChange1={this.props.handleChange}
                 createPost1={this.props.createPost}
-                currentUser1={this.props.currentUser}
+                loggedInUser2={this.props.loggedInUser1}
+                liftStateToProfileView1={this.liftStateToProfileView}
+                liftStateToApp2={this.props.liftStateToApp1}
             ></NewPostForm>
             <PostEach
                 activePost={this.state.activePost}
