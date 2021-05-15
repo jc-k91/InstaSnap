@@ -3,6 +3,7 @@ class App extends React.Component{
         loggedIn: false,
         currentView: "profile",
         currentUser: {},
+        loggedInUser: {}
         // username: 'jesse',// DELETE FOR FULL PRODUCTION DEPLOYMENT
         // password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
@@ -16,23 +17,6 @@ class App extends React.Component{
     // ------ SESSION ------
     // in setState, the author part makes it so the 'author' of a session will always be that person's username
     // !== {} checks to make sure there IS a currentUser (not an empty object)
-    login = (e) => {
-        e.preventDefault()
-        axios.post(
-            '/session/login',
-            this.state
-        ).then((response) => {
-            if (this.state.currentUser !== {}) {
-                this.setState(
-                    {
-                        loggedIn: true,
-                        currentUser: response.data,
-                        author: response.data.username
-                    }
-                )
-            }
-        })
-    }
     logout = () => {
         axios.delete(
             '/session'
@@ -165,9 +149,13 @@ class App extends React.Component{
         )
     }
 
+    liftStateToApp = (stateObject) => {
+        this.setState(stateObject)
+    }
+
     // ------ RENDER ------
     render = () => {
-        if (this.state.loggedIn === true) {
+        if (this.state.sessionInfo) {
             if (this.state.currentView === "profile") {
                 return <ProfileView
                     logout={this.logout}
@@ -193,8 +181,7 @@ class App extends React.Component{
             }
         } else {
             return <LandingView
-                login={this.login}
-                handleChange={this.handleChange}
+                liftStateToApp1={this.liftStateToApp}
             ></LandingView>
         }
     }

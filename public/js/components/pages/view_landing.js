@@ -5,13 +5,14 @@ class LandingView extends React.Component{
                 <img src="../../../img/instasnap-horiz-logo.png" alt="instasnap logo" />
             </header>
             <LoginForm
-                handleChange1={this.props.handleChange}
+                handleFormInput1={this.handleFormInput}
                 login1={this.props.login}
+                liftStateToApp2={this.props.liftStateToApp1}
             ></LoginForm>
             <hr></hr>
             <CreateAccount
-                handleChange1={this.props.handleChange}
-                createAccount1={this.props.createAccount}
+                handleFormInput1={this.handleFormInput}
+                /* ADD LOGIN CALLBACK FUNCTION TO LOG IN WHEN CREATING ACCOUNT */
             ></CreateAccount>
         </div>
     }
