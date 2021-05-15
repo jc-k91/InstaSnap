@@ -12,7 +12,7 @@ class CreateAccount extends React.Component {
             '/users',
             this.state
         ).then((response) => {
-            console.log(response) // THIS IS WHERE WE SHOULD AUTOMATICALLY LOG THE USER IN WITH THE NEW USER CREDENTIALS
+            // LOG IN WITH NEWLY CREATED CREDENTIALS HERE
         })
     }
     render = () => {

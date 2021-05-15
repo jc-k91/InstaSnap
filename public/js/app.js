@@ -12,7 +12,7 @@ class App extends React.Component{
     }
     // ------ SESSION ------
     // !== {} checks to make sure there IS a currentUser (not an empty object)
-    logout = () => { // NEED TO MOVE THIS 
+    logout = () => { // NEED TO MOVE THIS
         axios.delete(
             '/session'
         ).then((response) => {
@@ -35,7 +35,7 @@ class App extends React.Component{
             this.state
         ).then((postResponse) => {
             axios.get(
-                '/users/' + this.state.currentUser.username
+                '/users/' + this.state.loggedInUser.username
             ).then((userResponse) => {
                 this.setState(
                     {
