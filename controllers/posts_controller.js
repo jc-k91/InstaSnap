@@ -4,8 +4,9 @@ const express = require('express')
 const posts = express.Router()
 
 // ------ SCHEMA ------
-const Post = require('../models/post.js')
 const User = require('../models/user.js')
+const Post = require('../models/post.js')
+const Comment = require('../models/comment.js')
 
 // ========== ROUTES ==========
 // ------ ALL POSTS ------
