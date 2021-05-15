@@ -21,7 +21,7 @@ sessions.post('/login', (req, res) => {
                     console.log(err)
                 // IF USERNAME IS NOT FOUND
                 } else if ( !foundUser ) {
-                    res.send("Invalid login credentials. Is your Caps Lock on? Did you spell your username/password correctly?")
+                    res.json("Invalid")
                 // IF USERNAME IS FOUND
                 } else {
                     // IF THE PASSWORD IS CORRECT
@@ -31,7 +31,7 @@ sessions.post('/login', (req, res) => {
                         res.json(req.session)
                     // IF THE PASSWORD IS INCORRECT
                     } else {
-                        res.send("Invalid login credentials. Is your Caps Lock on? Did you spell your username/password correctly?")
+                        res.json("Invalid")
                     }
                 }
             }
