@@ -9,11 +9,9 @@ class GridView extends React.Component {
         let userPosts = this.state.loggedInUser.posts
         for (let i = 0; i < userPosts.length; i++) {
             if (userPosts[i]._id === e.target.getAttribute('value')) {
-                console.log('found post');
                 this.props.toggleActivePost1(userPosts[i])
             }
         }
-        document.getElementById('post-modal').classList.toggle('hide')
     }
 
     // https://reactjs.org/docs/react-component.html#componentdidupdate
