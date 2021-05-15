@@ -151,13 +151,13 @@ class App extends React.Component{
 
     // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
-        axios.get('/posts').then((response) => {
-            this.setState(
-                {
-                    allPosts: response.data
-                }
-            )
-        })
+        // axios.get('/posts').then((response) => {
+        //     this.setState(
+        //         {
+        //             allPosts: response.data
+        //         }
+        //     )
+        // })
     }
 
     changeView = (e) => {
