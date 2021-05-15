@@ -10,20 +10,6 @@ class App extends React.Component{
 
         )
     }
-    // ------ SESSION ------
-    // !== {} checks to make sure there IS a currentUser (not an empty object)
-    logout = () => { // PARTIALLY REFACTORED; NEED TO MOVE THIS
-        axios.delete(
-            '/session'
-        ).then((response) => {
-            this.setState(
-                {
-                    loggedInUser: response.data.currentUser,
-                    sessionInfo: response.data
-                }
-            )
-        })
-    }
 
     // ------ POSTS ------
     // Had an issue with userResponse - after console logging it, determined we needed userResponse.data AND it was returning an array so we added [0] to return first result
@@ -166,13 +152,13 @@ class App extends React.Component{
             /* PROFILE VIEW */
             if (this.state.currentView === "profile") {
                 return <ProfileView
-                    logout={this.logout}
                     currentUser={this.state.loggedInUser}
                     changeView={this.changeView}
                     handleChange={this.handleChange}
                     createPost={this.createPost}
                     editPost={this.editPost}
                     deletePost={this.deletePost}
+                    liftStateToApp1={this.liftStateToApp}
                 ></ProfileView>
             /* SEARCH VIEW */
             } else if (this.state.currentView === "search") {
