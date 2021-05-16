@@ -1,7 +1,7 @@
 /*==============================================================
 ========================== MOBILE ============================*/
 
-/* @media only screen and (min-width: 576) {} */
+@media only screen and (min-width: 576) {
   /*----- PROFILE VIEW ------*/
 
   .user-profile {
@@ -36,3 +36,5 @@
     object-fit: cover;
     margin: 10px;
   }
+
+}

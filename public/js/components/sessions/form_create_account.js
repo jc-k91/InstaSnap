@@ -35,7 +35,7 @@ class CreateAccount extends React.Component {
         })
     }
     render = () => {
-        return <form onSubmit={this.createAccount} className="form-group">
+        return <form onSubmit={this.createAccount} className="form-group landing-form">
             <h4>Create an Account</h4>
             <input
                 type="text"
@@ -69,7 +69,10 @@ class CreateAccount extends React.Component {
                 className="form-control"
             />
             <br/>
-            <input type="submit" value="Create Account"/>
+            <input
+                type="submit"
+                value="Create Account"
+                className="btn btn-default"/>
         </form>
     }
 }

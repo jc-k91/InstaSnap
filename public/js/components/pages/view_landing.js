@@ -5,10 +5,7 @@ class LandingView extends React.Component{
     render = () => {
         return <div className="profile-page">
             <header>
-            {(window.matchMedia('(max-width: 768px)').matches) ?
-                <img src="../../../img/instasnap-sq-logo.png" alt="instasnap logo" />
-            :
-                null }
+                <img src="../../../img/instasnap-horiz-logo.png" alt="instasnap logo" />
             </header>
             <LoginForm
                 liftStateToLandingView1={this.liftStateToLandingView}
