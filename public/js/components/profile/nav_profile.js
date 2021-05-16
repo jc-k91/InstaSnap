@@ -1,7 +1,17 @@
 class ProfileNav extends React.Component {
+    goHome = () => {
+        this.props.liftStateToApp2(
+            {
+                activeProfile: this.props.loggedInUser2
+            }
+        )
+    }
     render = () => {
         return <nav id="profile-nav" className="navbar navbar-default">
-            <img src="../../../img/instasnap-sq-logo.png" alt="Instasnap" />
+            <img
+                src="../../../img/instasnap-sq-logo.png" alt="Instasnap"
+                onClick={this.goHome}
+            />
             <ul>
                 <li>
                     <p id="user-greeting">
