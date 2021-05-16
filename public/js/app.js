@@ -4,13 +4,6 @@ class App extends React.Component{
         // password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
     // ========== FUNCTIONS ==========
-    // ------ USER ACCOUNT ------
-    deleteAccount = () => {
-        axios.delete(
-
-        )
-    }
-
     // ------ POSTS ------
     editPost = (e) => {
         e.preventDefault()
@@ -34,34 +27,6 @@ class App extends React.Component{
             }
         )
     }
-    deletePost = (e) => {
-        e.preventDefault()
-        // console.log(e.target.value) // What the Farquad. This won't pull the value attribute for some reason...
-        axios.delete(
-            '/posts/' + e.target.getAttribute('value'),
-            (err, deletedPost) => {
-                console.log(err)
-            }
-        ).then((response) => {
-            this.setState(
-                {
-                    allPosts: response.data
-                }
-            )
-        })
-    }
-    // render pageview "profile" to show user's profile
-    // once we have other views, we can use this
-    renderProfile = () => {
-        this.setState(
-            {
-                currentView: "profile"
-            }
-        )
-    }
-
-
-
 
     // ------ SETTING STATE TO FORM INPUT ------
     handleChange = (e) => {
@@ -75,19 +40,6 @@ class App extends React.Component{
     // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
         console.log('Page loaded')
-        // axios.get(
-        //     '/session/validate'
-        // ).then((response) => {
-        //     if (response.data.currentUser) {
-        //         this.setState(
-        //             {
-        //                 loggedInUser: response.data.currentUser,
-        //                 sessionInfo: response.data,
-        //                 currentView: "profile"
-        //             }
-        //         )
-        //     }
-        // })
         // FORCES LOGOUT ON PAGE LOAD/RELOAD
         axios.delete(
             '/session'
@@ -123,16 +75,12 @@ class App extends React.Component{
                     loggedInUser1={this.state.loggedInUser}
                     activeProfile1={this.state.activeProfile}
                     changeView1={this.changeView}
-                    handleChange={this.handleChange}
-                    createPost={this.createPost}
                     editPost={this.editPost}
-                    deletePost={this.deletePost}
                     liftStateToApp1={this.liftStateToApp}
                 ></ProfileView>
             /* SEARCH VIEW */
             } else if (this.state.currentView === "search") {
                 return <SearchView
-                    handleChange={this.handleChange}
                     changeView1={this.changeView}
                     liftStateToApp1={this.liftStateToApp}
                 ></SearchView>

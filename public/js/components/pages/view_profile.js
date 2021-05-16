@@ -40,16 +40,13 @@ class ProfileView extends React.Component{
                 toggleActivePost1={this.toggleActivePost}
             ></GridView>
             <NewPostForm
-                createPost1={this.props.createPost}
                 loggedInUser2={this.props.loggedInUser1}
                 liftStateToProfileView1={this.liftStateToProfileView}
                 liftStateToApp2={this.props.liftStateToApp1}
             ></NewPostForm>
             <PostEach
                 activePost1={this.state.activePost}
-                editPost1={this.props.editPost}
-                handleChange1={this.props.handleChange}
-                deletePost1={this.props.deletePost}
+                editPost1={this.props.editPost} // NEED TO CHANGE
                 liftStateToApp2={this.props.liftStateToApp1}
             ></PostEach>
         </div>
