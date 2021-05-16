@@ -12,6 +12,7 @@ class Result extends React.Component{
             onClick={this.updateView}
             value='profile'
             profileid={this.props.user1._id}
+            className="btn"
         >{this.props.user1.username}</button>
     }
 }
