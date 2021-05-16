@@ -31,6 +31,7 @@ class EditForm extends React.Component {
                 )
             }
         )
+        e.target.reset()
     }
     render = () => {
         return <form
