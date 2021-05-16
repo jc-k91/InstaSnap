@@ -34,6 +34,7 @@ class ProfileView extends React.Component{
                 changeView2={this.props.changeView1}
                 logout={this.logout}
                 loggedInUser2={this.props.loggedInUser1}
+                liftStateToApp2={this.props.liftStateToApp1}
             ></ProfileNav>
             <UserProfile
                 activeProfile2={this.props.activeProfile1}
@@ -42,13 +43,20 @@ class ProfileView extends React.Component{
                 activeProfile2={this.props.activeProfile1}
                 toggleActivePost1={this.toggleActivePost}
             ></GridView>
-            <NewPostForm
-                loggedInUser2={this.props.loggedInUser1}
-                liftStateToProfileView1={this.liftStateToProfileView}
-                liftStateToApp2={this.props.liftStateToApp1}
-            ></NewPostForm>
+            { this.props.activeProfile1 === this.props.loggedInUser1
+                ?
+                    <NewPostForm
+                        loggedInUser2={this.props.loggedInUser1}
+                        liftStateToProfileView1={this.liftStateToProfileView}
+                        liftStateToApp2={this.props.liftStateToApp1}
+                    ></NewPostForm>
+                :
+                    null
+            }
             <PostEach
                 activePost1={this.state.activePost}
+                activeProfile2={this.props.activeProfile1}
+                loggedInUser2={this.props.loggedInUser1}
                 liftStateToApp2={this.props.liftStateToApp1}
                 liftStateToProfileView1={this.liftStateToProfileView}
             ></PostEach>

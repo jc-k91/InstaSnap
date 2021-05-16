@@ -28,6 +28,11 @@ class SearchView extends React.Component{
     }
     render = () => {
         return <div className="search-page">
+            <ProfileNav
+                changeView2={this.props.changeView1}
+                logout={this.logout}
+                loggedInUser2={this.props.loggedInUser1}
+            ></ProfileNav>
             <form onSubmit={this.search}>
                 <input type="text" name="query" placeholder="Search for users..." onKeyUp={this.handleFormInput}
                 className="form-control"/>
