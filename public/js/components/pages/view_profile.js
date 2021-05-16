@@ -46,10 +46,11 @@ class ProfileView extends React.Component{
                 liftStateToApp2={this.props.liftStateToApp1}
             ></NewPostForm>
             <PostEach
-                activePost={this.state.activePost}
+                activePost1={this.state.activePost}
                 editPost1={this.props.editPost}
                 handleChange1={this.props.handleChange}
                 deletePost1={this.props.deletePost}
+                liftStateToApp2={this.props.liftStateToApp1}
             ></PostEach>
         </div>
     }

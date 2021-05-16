@@ -60,14 +60,20 @@ posts.put('/:id', (req, res) => {
 posts.delete('/:id', (req, res) => {
     Post.findByIdAndRemove(
         req.params.id,
-        (err, deletedPost) => {
-            if (err) {
-                console.log(err)
-            } else {
-                Post.find({}, (error, allPosts) => {
-                    res.json(allPosts)
-                })
-            }
+        (err1, deletedPost) => {
+            User.findById(
+                req.session.currentUser._id,
+                (err2, updatedUser) => {
+                    res.json(updatedUser)
+                }
+            ).populate('posts')
+            // if (err) {
+            //     console.log(err)
+            // } else {
+            //     Post.find({}, (error, allPosts) => {
+            //         res.json(allPosts)
+            //     })
+            // }
         }
     )
 })
