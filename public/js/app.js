@@ -82,6 +82,7 @@ class App extends React.Component{
                 return <SearchView
                     changeView1={this.changeView}
                     liftStateToApp1={this.liftStateToApp}
+                    loggedInUser1={this.state.loggedInUser}
                 ></SearchView>
             /* NEXT VIEW */
             } else if (this.state.currentView === "b") {
