@@ -29,8 +29,12 @@ class SearchView extends React.Component{
     render = () => {
         return <div className="search-page">
             <form onSubmit={this.search}>
-                <input type="text" name="query" placeholder="Search for users..." onKeyUp={this.handleFormInput} />
-                <input type="submit" value="Search" />
+                <input type="text" name="query" placeholder="Search for users..." onKeyUp={this.handleFormInput}
+                className="form-control"/>
+                <input
+                    type="submit"
+                    value="Search"
+                    className="btn"/>
             </form>
             <AllSearchResults
                 changeView2={this.props.changeView1}
