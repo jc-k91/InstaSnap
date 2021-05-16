@@ -4,7 +4,7 @@ class AllSearchResults extends React.Component{
             {
                 this.props.searchResults1.map((user) => {
                     return <Result
-                        user={user}
+                        user1={user}
                         changeView2={this.props.changeView1}
                         key={user._id}
                         liftStateToApp3={this.props.liftStateToApp2}

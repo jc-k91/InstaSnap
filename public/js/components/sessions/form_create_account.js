@@ -12,7 +12,26 @@ class CreateAccount extends React.Component {
             '/users',
             this.state
         ).then((response) => {
-            // LOG IN WITH NEWLY CREATED CREDENTIALS HERE
+            // THIS AUTOMATICALLY LOGS IN USER WITH NEWLY CREATED CREDENTIALS
+            axios.post(
+                '/session/login',
+                this.state
+            ).then((response) => {
+                if (response.data.currentUser) {
+                    this.props.liftStateToApp2(
+                        {
+                            loggedInUser: response.data.currentUser,
+                            activeProfile: response.data.currentUser,
+                            sessionInfo: response.data,
+                            currentView: "profile",
+                            author: response.data.currentUser.username
+                        }
+                    )
+                } else if (response.data === "Invalid") {
+                    alert('Invalid login credentials. Please try again.')
+
+                }
+            })
         })
     }
     render = () => {

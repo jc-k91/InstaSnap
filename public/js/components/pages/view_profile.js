@@ -46,7 +46,7 @@ class ProfileView extends React.Component{
             ></NewPostForm>
             <PostEach
                 activePost1={this.state.activePost}
-                editPost1={this.props.editPost}
+                editPost1={this.props.editPost} // NEED TO CHANGE
                 liftStateToApp2={this.props.liftStateToApp1}
             ></PostEach>
         </div>
