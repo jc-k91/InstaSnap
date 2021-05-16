@@ -11,8 +11,8 @@ const userSchema = new Schema(
         password: String,
         profilePic: String,
         bio: String,
-        followers: [],
-        following: [],
+        followers: [{type: Schema.Types.ObjectId, ref: "User"}],
+        following: [{type: Schema.Types.ObjectId, ref: "User"}],
         // Stores the user's posts' ids in an array
         posts: [{type: Schema.Types.ObjectId, ref: "Post"}]
     }

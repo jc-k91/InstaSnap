@@ -30,7 +30,7 @@ class ProfileView extends React.Component{
     }
     render = () => {
         return <div className="profile-page">
-            <button onClick={this.props.changeView} value="search">Search</button>
+            <button onClick={this.props.changeView1} value="search">Search</button>
             <button onClick={this.logout}>Log Out</button>
             <UserProfile
                 activeProfile2={this.props.activeProfile1}
@@ -40,16 +40,14 @@ class ProfileView extends React.Component{
                 toggleActivePost1={this.toggleActivePost}
             ></GridView>
             <NewPostForm
-                createPost1={this.props.createPost}
                 loggedInUser2={this.props.loggedInUser1}
                 liftStateToProfileView1={this.liftStateToProfileView}
                 liftStateToApp2={this.props.liftStateToApp1}
             ></NewPostForm>
             <PostEach
-                activePost={this.state.activePost}
-                editPost1={this.props.editPost}
-                handleChange1={this.props.handleChange}
-                deletePost1={this.props.deletePost}
+                activePost1={this.state.activePost}
+                liftStateToApp2={this.props.liftStateToApp1}
+                liftStateToProfileView1={this.liftStateToProfileView}
             ></PostEach>
         </div>
     }

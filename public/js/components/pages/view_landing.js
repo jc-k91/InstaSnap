@@ -13,7 +13,7 @@ class LandingView extends React.Component{
             ></LoginForm>
             <hr></hr>
             <CreateAccount
-                /* ADD LOGIN CALLBACK FUNCTION TO LOG IN WHEN CREATING ACCOUNT */
+                liftStateToApp2={this.props.liftStateToApp1}
             ></CreateAccount>
         </div>
     }

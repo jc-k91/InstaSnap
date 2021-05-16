@@ -4,13 +4,6 @@ class App extends React.Component{
         // password: 'test'// DELETE FOR FULL PRODUCTION DEPLOYMENT
     }
     // ========== FUNCTIONS ==========
-    // ------ USER ACCOUNT ------
-    deleteAccount = () => {
-        axios.delete(
-
-        )
-    }
-
     // ------ POSTS ------
     editPost = (e) => {
         e.preventDefault()
@@ -34,51 +27,6 @@ class App extends React.Component{
             }
         )
     }
-    deletePost = (e) => {
-        e.preventDefault()
-        // console.log(e.target.value) // What the Farquad. This won't pull the value attribute for some reason...
-        axios.delete(
-            '/posts/' + e.target.getAttribute('value'),
-            (err, deletedPost) => {
-                console.log(err)
-            }
-        ).then((response) => {
-            this.setState(
-                {
-                    allPosts: response.data
-                }
-            )
-        })
-    }
-    // render pageview "profile" to show user's profile
-    // once we have other views, we can use this
-    renderProfile = () => {
-        this.setState(
-            {
-                currentView: "profile"
-            }
-        )
-    }
-
-    // ------ SEARCH ------
-    search = (e) => {
-        e.preventDefault()
-        axios.get(
-            '/users/' + this.state.query
-        ).then((response) => {
-            console.log(response.data[0]);
-            if (response.data[0]) {
-                this.setState(
-                    {
-                        allUsers: response.data
-                    }
-                )
-            } else {
-                alert('no user found')
-            }
-        })
-    }
-
 
     // ------ SETTING STATE TO FORM INPUT ------
     handleChange = (e) => {
@@ -92,19 +40,6 @@ class App extends React.Component{
     // ------ ONLOAD DATA RETRIEVAL ------
     componentDidMount = () => {
         console.log('Page loaded')
-        // axios.get(
-        //     '/session/validate'
-        // ).then((response) => {
-        //     if (response.data.currentUser) {
-        //         this.setState(
-        //             {
-        //                 loggedInUser: response.data.currentUser,
-        //                 sessionInfo: response.data,
-        //                 currentView: "profile"
-        //             }
-        //         )
-        //     }
-        // })
         // FORCES LOGOUT ON PAGE LOAD/RELOAD
         axios.delete(
             '/session'
@@ -121,7 +56,7 @@ class App extends React.Component{
     changeView = (e) => {
         this.setState(
             {
-                currentView: e.target.value
+                currentView: e.target.getAttribute('value')
             }
         )
     }
@@ -139,20 +74,14 @@ class App extends React.Component{
                 return <ProfileView
                     loggedInUser1={this.state.loggedInUser}
                     activeProfile1={this.state.activeProfile}
-                    changeView={this.changeView}
-                    handleChange={this.handleChange}
-                    createPost={this.createPost}
-                    editPost={this.editPost}
-                    deletePost={this.deletePost}
+                    changeView1={this.changeView}
                     liftStateToApp1={this.liftStateToApp}
                 ></ProfileView>
             /* SEARCH VIEW */
             } else if (this.state.currentView === "search") {
                 return <SearchView
-                    handleChange={this.handleChange}
-                    search={this.search}
-                    allUsers={this.state.allUsers}
-                    changeView={this.changeView}
+                    changeView1={this.changeView}
+                    liftStateToApp1={this.liftStateToApp}
                 ></SearchView>
             /* NEXT VIEW */
             } else if (this.state.currentView === "b") {

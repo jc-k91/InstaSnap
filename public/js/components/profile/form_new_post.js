@@ -12,29 +12,29 @@ class NewPostForm extends React.Component{
         )
     }
     // Had an issue with userResponse - after console logging it, determined we needed userResponse.data AND it was returning an array so we added [0] to return first result
-    // double axios call reppin up in here
     createPost = (e) => {
         e.preventDefault()
         axios.post(
             '/posts',
             this.state
         ).then((response) => {
-            // axios.get(
-            //     '/users/' + this.props.loggedInUser2._id
-            // ).then((userResponse) => {
-                const updatedUser = response.data
-                this.setState(
-                    {
-                        image: "",
-                        caption: ""
-                    }
-                )
-                this.props.liftStateToApp2(
-                    {
-                        loggedInUser: updatedUser
-                    }
-                )
-            // })
+        // axios.get(
+        //     '/users/' + this.props.loggedInUser2._id
+        // ).then((userResponse) => {
+            const updatedUser = response.data
+            this.setState(
+                {
+                    image: "",
+                    caption: ""
+                }
+            )
+            this.props.liftStateToApp2(
+                {
+                    loggedInUser: updatedUser,
+                    activeProfile: updatedUser
+                }
+            )
+        // })
         })
     }
     render = () => {
