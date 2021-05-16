@@ -24,3 +24,4 @@ class ProfileNav extends React.Component {
             </ul>
         </nav>
     }
+}
