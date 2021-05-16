@@ -31,7 +31,8 @@ class NewPostForm extends React.Component{
                 )
                 this.props.liftStateToApp2(
                     {
-                        loggedInUser: updatedUser
+                        loggedInUser: updatedUser,
+                        activeProfile: updatedUser
                     }
                 )
             // })
