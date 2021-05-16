@@ -38,8 +38,8 @@ class Footer extends React.Component {
                         <i className="fab fa-linkedin"></i>
                     </a>
                     <a
-                        href=""
-                        target="">
+                        href="https://github.com/jmoryn"
+                        target="https://github.com/jmoryn">
                         <i className="fab fa-github"></i>
                     </a>
                 </li>
