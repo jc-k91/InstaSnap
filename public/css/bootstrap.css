@@ -10,6 +10,7 @@
   --teal: #054C5A;
   --forest-green: #005F60;
   --orange: #FE8C03;
+  --pale-orange: #fce5c5;
   /* --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -2162,7 +2163,8 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .form-text {

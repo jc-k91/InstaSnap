@@ -38,13 +38,18 @@ class NewPostForm extends React.Component{
         e.target.reset()
     }
     render = () => {
-        return <form onSubmit={this.createPost}>
+        return <form
+            onSubmit={this.createPost}
+            id="new-post-form"
+            className="form-group">
+            <h4>New Post</h4>
             <input
                 type="text"
                 id="create-post-form-image"
                 name="image"
                 placeholder="Image URL"
                 onKeyUp={this.handleFormInput}
+                className="form-control"
             /><br/>
             <input
                 type="text"
@@ -52,10 +57,12 @@ class NewPostForm extends React.Component{
                 name="caption"
                 placeholder="Start typing your caption here"
                 onKeyUp={this.handleFormInput}
+                className="form-control"
             /><br/>
             <input
                 type="submit"
                 value="Create Post"
+                className="btn"
             />
         </form>
     }
