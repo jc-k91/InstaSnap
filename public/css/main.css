@@ -153,15 +153,15 @@ h1, h2, h3, h4 {
     flex-direction: column;
     background: rgba(0, 0, 0, 0.4);
     z-index: 1;
-    margin-top: -50px;
+    margin-top: -50px; 
     align-items: center;
     justify-content: center;
 }
 
 .post-modal-background button {
-    position: absolute;
-    right: 0;
-    top: 0;
+    position: relative;
+    align-self: flex-start;
+    margin-left: 5%;
 }
 
 .post-modal {
@@ -183,6 +183,58 @@ h1, h2, h3, h4 {
     background: whitesmoke;
     z-index: 2;
     opacity: 1;
+    width: 90%;
+    /* padding: 20px 0px 0px 20px; */
+    background: var(--pale-orange);
+}
+
+#post-menu ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#post-menu li {
+    margin: 10px;
+    color: var(--teal);
+    transition: .3s;
+    cursor: pointer;
+}
+
+#post-menu li:hover {
+    color: var(--orange);
+}
+
+#delete-btn:hover {
+    color: red;
+}
+
+/*------- SEARCH VIEW -------*/
+
+#search-form {
+    margin: 10px auto;
+}
+
+#search-form .btn {
+    margin-top: 15px;
+}
+
+#result-container {
+    margin-top: 30px;
+}
+
+#result-div {
+    border-bottom: 1px solid var(--pale-orange);
+    padding-bottom: 15px;
+    margin-top: 30px;
+}
+
+#result-div a {
+    color: var(--teal);
+    transition: .3s;
+}
+
+#result-div a:hover {
+    color: var(--orange);
 }
 
 /*------- FOOTER -------*/

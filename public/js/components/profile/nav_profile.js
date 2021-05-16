@@ -1,5 +1,7 @@
 class ProfileNav extends React.Component {
     goHome = () => {
+        console.log("clicked");
+        console.log(this.props.loggedInUser2);
         this.props.liftStateToApp2(
             {
                 activeProfile: this.props.loggedInUser2
