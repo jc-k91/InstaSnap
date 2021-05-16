@@ -9,9 +9,32 @@ class EditForm extends React.Component {
             }
         )
     }
+    editPost = (e) => {
+        e.preventDefault()
+        axios.put(
+            '/posts/' + e.target.name,
+            this.state,
+            { new: true }
+        ).then(
+            (response) => {
+                console.log(response)
+                this.props.liftStateToApp3(
+                    {
+                        loggedInUser: response.data[1],
+                        activeProfile: response.data[1]
+                    }
+                )
+                this.props.liftStateToProfileView2(
+                    {
+                        activePost: response.data[0]
+                    }
+                )
+            }
+        )
+    }
     render = () => {
         return <form
-            onSubmit={this.props.editPost2}
+            onSubmit={this.editPost}
             name={this.props.activePost2._id}
             id="edit-form"
             className="hide"
