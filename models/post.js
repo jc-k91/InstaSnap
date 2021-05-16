@@ -8,7 +8,7 @@ const postSchema = new Schema(
         author_id: String,
         image: String,
         caption: String,
-        likedBy: [],
+        likedBy: [{type: Schema.Types.ObjectId, ref: "User"}],
         // Stores the post's comments' ids in an array
         comments:[{type: Schema.Types.ObjectId, ref: "Comment"}]
     }
