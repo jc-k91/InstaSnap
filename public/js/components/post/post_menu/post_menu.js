@@ -3,10 +3,11 @@ class PostMenu extends React.Component {
         return <div id="post-menu" className="hide">
             <ul>
                 <li>
-                    <h6 onClick={this.props.toggleEditForm1}>Edit Post</h6>
+                    <a onClick={this.props.toggleEditForm1}>Edit Post</a>
                 </li>
                 <li>
-                    <h6 name={this.props.post_id} onClick={this.props.deletePost1}>Delete Post</h6>
+                    <a name={this.props.post_id} onClick={this.props.deletePost1}
+                    id="delete-btn">Delete Post</a>
                 </li>
             </ul>
         </div>

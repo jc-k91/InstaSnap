@@ -46,7 +46,7 @@ class PostEach extends React.Component {
         return <section id="post-modal" className="post-modal-background hide" onClick={this.closeModal}>
             { this.props.activeProfile2 === this.props.loggedInUser2
                 ?
-                    <button onClick={this.toggleMenu} className="menu-btn">THIS IS THE MENU TOGGLE</button>
+                    <button onClick={this.toggleMenu} className="btn menu-btn">Post Menu</button>
                 :
                     null
             }

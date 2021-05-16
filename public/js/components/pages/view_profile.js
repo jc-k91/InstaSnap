@@ -32,9 +32,10 @@ class ProfileView extends React.Component{
         return <div className="profile-page">
             <ProfileNav
                 changeView2={this.props.changeView1}
-                logout={this.logout}
+                logout1={this.logout}
                 loggedInUser2={this.props.loggedInUser1}
                 liftStateToApp2={this.props.liftStateToApp1}
+                activeProfile2={this.props.activeProfile1}
             ></ProfileNav>
             <UserProfile
                 activeProfile2={this.props.activeProfile1}
