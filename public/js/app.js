@@ -75,7 +75,6 @@ class App extends React.Component{
                     loggedInUser1={this.state.loggedInUser}
                     activeProfile1={this.state.activeProfile}
                     changeView1={this.changeView}
-                    editPost={this.editPost}
                     liftStateToApp1={this.liftStateToApp}
                 ></ProfileView>
             /* SEARCH VIEW */

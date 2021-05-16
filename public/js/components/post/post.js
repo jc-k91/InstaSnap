@@ -55,10 +55,11 @@ class PostEach extends React.Component {
                 <img src={this.state.renderedPost.image} />
                 <p>{this.state.renderedPost.caption}</p>
                 <EditForm
-                    editPost2={this.props.editPost1}
                     handleChange2={this.props.handleChange1}
                     activePost2={this.props.activePost1}
                     deletePost2={this.props.deletePost1}
+                    liftStateToProfileView2={this.props.liftStateToProfileView1}
+                    liftStateToApp3={this.props.liftStateToApp2}
                 ></EditForm>
             </div>
         </section>
