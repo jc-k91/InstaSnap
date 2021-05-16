@@ -4,7 +4,8 @@ class ProfileNav extends React.Component {
         console.log(this.props.loggedInUser2);
         this.props.liftStateToApp2(
             {
-                activeProfile: this.props.loggedInUser2
+                activeProfile: this.props.loggedInUser2,
+                currentView: "profile"
             }
         )
     }
@@ -29,7 +30,7 @@ class ProfileNav extends React.Component {
                 </li>
                 <li>
                     <a
-                        onClick={this.props.logout}>
+                        onClick={this.props.logout1}>
                             Log Out
                     </a>
                 </li>
