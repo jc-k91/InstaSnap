@@ -1,4 +1,7 @@
 class LandingView extends React.Component{
+    liftStateToLandingView = (stateObject) => {
+        this.setState(stateObject)
+    }
     render = () => {
         return <div className="profile-page">
             <header>
@@ -8,13 +11,12 @@ class LandingView extends React.Component{
                 null }
             </header>
             <LoginForm
-                handleChange1={this.props.handleChange}
-                login1={this.props.login}
+                liftStateToLandingView1={this.liftStateToLandingView}
+                liftStateToApp2={this.props.liftStateToApp1}
             ></LoginForm>
             <hr></hr>
             <CreateAccount
-                handleChange1={this.props.handleChange}
-                createAccount1={this.props.createAccount}
+                liftStateToApp2={this.props.liftStateToApp1}
             ></CreateAccount>
         </div>
     }

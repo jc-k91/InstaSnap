@@ -4,8 +4,9 @@ const express = require('express')
 const posts = express.Router()
 
 // ------ SCHEMA ------
-const Post = require('../models/post.js')
 const User = require('../models/user.js')
+const Post = require('../models/post.js')
+const Comment = require('../models/comment.js')
 
 // ========== ROUTES ==========
 // ------ ALL POSTS ------
@@ -15,17 +16,22 @@ posts.get('/', (req, res) => {
     })
 })
 
+// ------ FIND POST ------
+posts.get('/:postId', (req, res) => {
+    Post.findById(req.params.postId, (err, foundPost) => {
+        res.json(foundPost)
+    })
+})
+
 // ------ CREATE POST ------
 posts.post('/', (req, res) => {
-    User.findById(req.session.currentUser._id, (err1, foundUser) => {
-        Post.create(req.body, (err2, createdPost) => {
+    Post.create(req.body, (err1, createdPost) => {
+        User.findById(req.session.currentUser._id, (err2, foundUser) => {
+            console.log('added post');
             foundUser.posts.unshift(createdPost)
             foundUser.save()
-            console.log(foundUser.posts);
-            User.find({}, (err3, allUsers) => {
-                res.json(allUsers)
-            })
-        })
+            res.json(foundUser)
+        }).populate('posts')
     })
 })
 
@@ -39,13 +45,9 @@ posts.put('/:id', (req, res) => {
             new: true
         },
         (err, updatedPost) => {
-            if (err) {
-                console.log(err)
-            } else {
-                Post.find({}, (error, allPosts) => {
-                    res.json(allPosts)
-                })
-            }
+            User.findById(req.session.currentUser._id, (error, thisUser) => {
+                res.json([updatedPost, thisUser])
+            }).populate('posts')
         }
     )
 })
@@ -54,14 +56,20 @@ posts.put('/:id', (req, res) => {
 posts.delete('/:id', (req, res) => {
     Post.findByIdAndRemove(
         req.params.id,
-        (err, deletedPost) => {
-            if (err) {
-                console.log(err)
-            } else {
-                Post.find({}, (error, allPosts) => {
-                    res.json(allPosts)
-                })
-            }
+        (err1, deletedPost) => {
+            User.findById(
+                req.session.currentUser._id,
+                (err2, updatedUser) => {
+                    res.json(updatedUser)
+                }
+            ).populate('posts')
+            // if (err) {
+            //     console.log(err)
+            // } else {
+            //     Post.find({}, (error, allPosts) => {
+            //         res.json(allPosts)
+            //     })
+            // }
         }
     )
 })
