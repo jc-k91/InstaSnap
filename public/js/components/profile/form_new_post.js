@@ -34,19 +34,21 @@ class NewPostForm extends React.Component{
                     activeProfile: updatedUser
                 }
             )
-        // })
         })
+        e.target.reset()
     }
     render = () => {
         return <form onSubmit={this.createPost}>
             <input
                 type="text"
+                id="create-post-form-image"
                 name="image"
                 placeholder="Image URL"
                 onKeyUp={this.handleFormInput}
             /><br/>
             <input
                 type="text"
+                id="create-post-form-caption"
                 name="caption"
                 placeholder="Start typing your caption here"
                 onKeyUp={this.handleFormInput}
