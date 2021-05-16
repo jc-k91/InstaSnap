@@ -5,9 +5,7 @@ class LandingView extends React.Component{
     render = () => {
         return <div className="profile-page">
             <header>
-                <img
-                    src="../../../img/instasnap-horiz-logo.png"
-                    alt="instasnap logo"/>
+                <img src="../../../img/instasnap-horiz-logo.png" alt="instasnap logo" />
             </header>
             <LoginForm
                 liftStateToLandingView1={this.liftStateToLandingView}
@@ -17,7 +15,6 @@ class LandingView extends React.Component{
             <CreateAccount
                 liftStateToApp2={this.props.liftStateToApp1}
             ></CreateAccount>
-            <Footer></Footer>
         </div>
     }
 }

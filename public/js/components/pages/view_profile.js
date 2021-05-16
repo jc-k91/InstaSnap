@@ -30,11 +30,17 @@ class ProfileView extends React.Component{
     }
     render = () => {
         return <div className="profile-page">
-            <ProfileNav
-                changeView2={this.props.changeView1}
-                logout={this.logout}
-                loggedInUser2={this.props.loggedInUser1}
-            ></ProfileNav>
+            <button
+                onClick={this.props.changeView1}
+                value="search"
+                className="btn">
+                    Search
+            </button>
+            <button 
+                onClick={this.logout}
+                className="btn">
+                    Log Out
+            </button>
             <UserProfile
                 activeProfile2={this.props.activeProfile1}
             ></UserProfile>
@@ -52,20 +58,6 @@ class ProfileView extends React.Component{
                 liftStateToApp2={this.props.liftStateToApp1}
                 liftStateToProfileView1={this.liftStateToProfileView}
             ></PostEach>
-            <Footer></Footer>
         </div>
     }
 }
-
-// REPLACED BY <PROFILENAV> - OKAY TO DELETE?
-// <button
-//     onClick={this.props.changeView1}
-//     value="search"
-//     className="btn">
-//         Search
-// </button>
-// <button
-//     onClick={this.logout}
-//     className="btn">
-//         Log Out
-// </button>
