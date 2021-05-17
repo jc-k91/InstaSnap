@@ -134,7 +134,11 @@ h1, h2, h3, h4 {
     min-height: 200px;
     object-fit: cover;
     margin: 10px;
+    transition: .3s;
+  }
 
+  .post-grid img:hover {
+    opacity: 65%;
   }
 
 /*----- PROFILE VIEW - POST EACH MODAL ------*/
@@ -153,7 +157,7 @@ h1, h2, h3, h4 {
     flex-direction: column;
     background: rgba(0, 0, 0, 0.4);
     z-index: 1;
-    margin-top: -50px; 
+    margin-top: -50px;
     align-items: center;
     justify-content: center;
 }
