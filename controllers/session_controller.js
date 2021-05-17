@@ -27,6 +27,8 @@ sessions.post('/login', (req, res) => {
                 if (bcrypt.compareSync(req.body.password, foundUser.password)) {
                     console.log('==================== ' + req.body.username +  ' LOGGED IN ====================')
                     req.session.currentUser = foundUser
+
+                    // It turns out sending the req.session object to the client makes your app more vulnerable to exploits
                     res.json(req.session)
                 // IF THE PASSWORD IS INCORRECT
                 } else {

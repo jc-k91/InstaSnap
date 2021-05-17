@@ -13,6 +13,7 @@ class LoginForm extends React.Component {
             this.state
         ).then((response) => {
             if (response.data.currentUser) {
+                console.log(response)
                 this.props.liftStateToApp2(
                     {
                         loggedInUser: response.data.currentUser,
@@ -29,7 +30,7 @@ class LoginForm extends React.Component {
         })
     }
     render = () => {
-        return <form onSubmit={this.login} className="form-group landing-form">
+        return <form onSubmit={this.login} className="form-group">
             <h4>User Login</h4>
             <input
                 type="text"
@@ -48,7 +49,6 @@ class LoginForm extends React.Component {
             <input
                 type="submit"
                 value="Login"
-                className="btn btn-default"
             />
         </form>
     }
