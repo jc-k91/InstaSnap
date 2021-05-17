@@ -57,6 +57,7 @@
   }
 
   .user-profile div {
+    padding: 15px;
     border: 3px dotted var(--pale-orange);
     width: 300px;
     height: 300px;
@@ -83,6 +84,7 @@
     footer li {
         width: 25%;
         max-width: 150px;
+        margin: 5px 10px 0px 10px;
     }
 
 }
