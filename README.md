@@ -72,9 +72,7 @@ We reached out to a recent GA grad who was able to show us the (very very basic)
 
 After digging through a ton of React, MongoDB, and Mongoose docs plus a bajillion StackOverflow threads, we were able to get everything figured out (shoutout to componentDidUpdate).
 
-
-
 #### Reflection Section
 - All three group members in different time zones
-- Ended up pair programming mostly everything - ~~allowed us the opportunity~~ forced us to approach ~~big~~ <em>new</em> issues from multiple perspectives. We had to articulate our respective thought processes and find a way to reconcile any differences into a single actionable plan(?).
+- Ended up pair programming mostly everything, which ~~allowed us the opportunity~~ forced us to approach ~~big~~ <em>new</em> issues from multiple perspectives. We had to articulate our respective thought processes and find a way to reconcile any differences into a single actionable plan(?).
 - 90% of this has been debugging random bullshit -Jesse
