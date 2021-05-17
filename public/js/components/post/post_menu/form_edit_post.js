@@ -31,29 +31,34 @@ class EditForm extends React.Component {
                 )
             }
         )
+        e.target.reset()
     }
     render = () => {
         return <form
             onSubmit={this.editPost}
             name={this.props.activePost2._id}
             id="edit-form"
-            className="hide"
+            className="form-group hide"
         >
+            <h4>Edit Post</h4>
             <input
                 type="text"
                 name="image"
                 placeholder="Image URL"
                 onKeyUp={this.handleFormInput}
+                className="form-control"
             /><br/>
             <input
                 type="text"
                 name="caption"
-                placeholder="Start typing your caption here"
+                placeholder="Caption"
                 onKeyUp={this.handleFormInput}
+                className="form-control"
             /><br/>
             <input
                 type="submit"
                 value="Submit Changes"
+                className="btn"
             />
         </form>
     }

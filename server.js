@@ -40,6 +40,7 @@ app.use(express.json())
 app.use('/posts', postsController)
 app.use('/session', sessionController)
 app.use('/users', usersController)
+app.disable('x-powered-by')
 
 
 // CONNECTIONS  =============

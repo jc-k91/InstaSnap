@@ -14,14 +14,15 @@ h1, h2, h3, h4 {
   margin: 50px;
 }
 
-input[type=submit],
-button {
-  border: 1px solid var(--blue-black);
-  transition: .2s;
+.btn {
+    border: 1px solid var(--midnight-blue);
+    background: var(--pale-orange);
+    transition: .2s;
 }
 
-input[type=submit]:hover {
-  opacity: 75%;
+.btn:hover {
+    border: 1px solid var(--orange);
+    opacity: 75%;
 }
 
 /*==============================================================
@@ -35,10 +36,63 @@ input[type=submit]:hover {
      margin-bottom: 30px;
  }
 
+ header img {
+     width: 100%;
+ }
+
+ .form-group h4 {
+     margin-bottom: 1rem;
+ }
+
+ /*----- PROFILE VIEW - NAV BAR ------*/
+
+ #profile-nav {
+    width: 100%;
+    border-bottom: 1px solid var(--pale-orange);
+    border-top: 1px solid var(--pale-orange);
+    padding: 10px 15px 10px 10px;
+    display: block;
+    text-align: center;
+ }
+
+ #profile-nav img {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 10px;
+ }
+
+ #profile-nav ul {
+     display: flex;
+     flex-direction: column;
+     align-items: space-between;
+     list-style: none;
+     padding-left: 0;
+     margin-bottom: 0;
+ }
+
+ #profile-nav li {
+     color: var(--midnight-blue);
+     transition: .4s;
+     cursor: pointer;
+     margin: 5px;
+ }
+
+ #profile-nav li:hover {
+     color: var(--orange);
+ }
+
+ #user-greeting {
+     color: var(--orange);
+     opacity: 60%;
+     margin-bottom: 0;
+     cursor: default;
+ }
+
  /*----- PROFILE VIEW ------*/
 
   .user-profile {
       text-align: center;
+      margin: 50px;
   }
 
   .user-profile h2 {
@@ -49,9 +103,20 @@ input[type=submit]:hover {
   .user-profile img {
       width: 250px;
       height: 250px;
-      margin: 10px;
+      margin: 10px 10px 20px 10px;
+      border: 3px solid var(--midnight-blue);
       border-radius: 50%;
       object-fit: cover;
+  }
+
+  /*----- PROFILE VIEW - NEW POST FORM ------*/
+
+  #new-post-form {
+      border: 1px solid var(--midnight-blue);
+      margin: 40px auto;
+      max-width: 900px;
+      padding: 40px;
+      width: 80%;
   }
 
   /*----- PROFILE VIEW - POST GRID ------*/
@@ -63,10 +128,17 @@ input[type=submit]:hover {
   }
 
   .post-grid img {
-    width: 300px;
-    height: 300px;
+    width: 50vmin;
+    height: 50vmin;
+    min-width: 200px;
+    min-height: 200px;
     object-fit: cover;
     margin: 10px;
+    transition: .3s;
+  }
+
+  .post-grid img:hover {
+    opacity: 65%;
   }
 
 /*----- PROFILE VIEW - POST EACH MODAL ------*/
@@ -91,9 +163,9 @@ input[type=submit]:hover {
 }
 
 .post-modal-background button {
-    position: absolute;
-    right: 0;
-    top: 0;
+    position: relative;
+    align-self: flex-start;
+    margin-left: 5%;
 }
 
 .post-modal {
@@ -103,8 +175,11 @@ input[type=submit]:hover {
 }
 
 .post-modal img {
-    width: 50%;
-    height: auto;
+    width: 50vmin;
+    height: 50vmin;
+    min-width: 200px;
+    min-height: 200px;
+    object-fit: cover;
     margin: 10px auto;
 }
 
@@ -112,58 +187,108 @@ input[type=submit]:hover {
     background: whitesmoke;
     z-index: 2;
     opacity: 1;
+    width: 90%;
+    /* padding: 20px 0px 0px 20px; */
+    background: var(--pale-orange);
 }
 
-/*==============================================================
-========================= TABLET ==============================*/
+#post-menu ul {
+    list-style: none;
+    padding-left: 0;
+}
 
-@media only screen and (min-width: 768px) {
+#post-menu li {
+    margin: 10px;
+    color: var(--teal);
+    transition: .3s;
+    cursor: pointer;
+}
 
-  /*----- PROFILE VIEW ------*/
+#post-menu li:hover {
+    color: var(--orange);
+}
 
-  .user-profile {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
-  }
+#delete-btn:hover {
+    color: red;
+}
 
-  .user-profile h2 {
-      width: 100%;
-      text-align: center;
-  }
+/*------- SEARCH VIEW -------*/
 
-  .user-profile img {
-      width: 300px;
-      height: 300px;
-      margin: 10px;
-      border-radius: 50%;
-      object-fit: cover;
-  }
+#search-form {
+    margin: 10px auto;
+}
 
-  .user-profile div {
-    border: 1px solid gray;
-    align-self: center;
-    width: 300px;
-    height: 300px;
+#search-form .btn {
+    margin-top: 15px;
+}
+
+#result-container {
+    margin-top: 30px;
+}
+
+#result-div {
+    border-bottom: 1px solid var(--pale-orange);
+    padding-bottom: 15px;
+    margin-top: 30px;
+}
+
+#result-div a {
+    color: var(--teal);
+    transition: .3s;
+}
+
+#result-div a:hover {
+    color: var(--orange);
+}
+
+/*------- FOOTER -------*/
+
+footer {
+    width: 100%;
+    margin: 40px 20px 0px 20px;
+    padding: 20px;
+    text-align: center;
+    color: gray;
+    border-top: 1px solid var(--pale-orange);
+    border-bottom: 1px solid var(--pale-orange);
+}
+
+footer ul {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: -1;
-    border-radius: 50%;
-    margin-left: -60px;
-  }
-
-  .user-profile p {
-    width: 80%;
-  }
-
+    list-style: none;
+    flex-direction: column;
+    padding-left: 0;
+    width: 100%;
+    justify-content: space-between;
 }
 
-/*==============================================================
-========================= DESKTOP =============================*/
+footer li {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    color: var(--orange);
+    opacity: 65%;
+    margin: 5px 10px 30px 10px;
+}
 
-@media only screen and (min-width: 992px) {
+#last-footer-li {
+    margin-bottom: 5px;
+}
 
+footer p {
+    width: 100%;
+}
+
+footer li i {
+    font-size: 20px;
+    color: var(--teal);
+    transition: .3s;
+    margin: 0px 10px;
+}
+
+footer li i:hover {
+    color: var(--orange);
+    text-decoration: none;
 }
 
 /*==============================================================

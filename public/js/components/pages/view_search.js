@@ -2,6 +2,18 @@ class SearchView extends React.Component{
     state = {
         searchResults: []
     }
+    logout = () => { // PARTIALLY REFACTORED; NEED TO MOVE WHEREVER LOGOUT BUTTON GOES
+        axios.delete(
+            '/session'
+        ).then((response) => {
+            this.props.liftStateToApp1(
+                {
+                    loggedInUser: response.data.currentUser,
+                    sessionInfo: response.data
+                }
+            )
+        })
+    }
     handleFormInput = (e) => {
         this.setState(
             {
@@ -28,9 +40,20 @@ class SearchView extends React.Component{
     }
     render = () => {
         return <div className="search-page">
-            <form onSubmit={this.search}>
-                <input type="text" name="query" placeholder="Search for users..." onKeyUp={this.handleFormInput} />
-                <input type="submit" value="Search" />
+            <ProfileNav
+                changeView2={this.props.changeView1}
+                logout1={this.logout}
+                loggedInUser2={this.props.loggedInUser1}
+                liftStateToApp2={this.props.liftStateToApp1}
+                activeProfile2={this.props.activeProfile1}
+            ></ProfileNav>
+            <form onSubmit={this.search} id="search-form" className="form-group">
+                <input type="text" name="query" placeholder="Search for users..." onKeyUp={this.handleFormInput}
+                className="form-control"/>
+                <input
+                    type="submit"
+                    value="Search"
+                    className="btn"/>
             </form>
             <AllSearchResults
                 changeView2={this.props.changeView1}

@@ -8,10 +8,12 @@ class Result extends React.Component{
         )
     }
     render = () => {
-        return <button
-            onClick={this.updateView}
-            value='profile'
-            profileid={this.props.user1._id}
-        >{this.props.user1.username}</button>
+        return <div id="result-div">
+            <a
+                onClick={this.updateView}
+                value='profile'
+                profileid={this.props.user1._id}
+            >{this.props.user1.username}</a>
+        </div>
     }
 }

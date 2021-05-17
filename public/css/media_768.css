@@ -3,6 +3,38 @@
 
 @media only screen and (min-width: 768px) {
 
+  /*----- LANDING VIEW ------*/
+
+    .landing-form {
+        width: 50%;
+    }
+
+    /*----- PROFILE VIEW - NAV BAR ------*/
+
+    #profile-nav {
+       display: flex;
+       justify-content: space-between;
+       width: 100%;
+       border-bottom: 1px solid var(--pale-orange);
+       border-top: 1px solid var(--pale-orange);
+       padding: 10px 15px 10px 10px;
+    }
+
+    #profile-nav img {
+       width: 110px;
+       height: 110px;
+    }
+
+    #profile-nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+        width: 40%;
+    }
+
   /*----- PROFILE VIEW ------*/
 
   .user-profile {
@@ -25,8 +57,8 @@
   }
 
   .user-profile div {
-    border: 1px solid gray;
-    align-self: center;
+    padding: 15px;
+    border: 3px dotted var(--pale-orange);
     width: 300px;
     height: 300px;
     display: flex;
@@ -34,11 +66,25 @@
     align-items: center;
     z-index: -1;
     border-radius: 50%;
-    margin-left: -60px;
+    margin-left: -90px;
   }
 
   .user-profile p {
-    width: 80%;
+    width: 85%;
+    max-width: 200px;
   }
+
+  /*----- FOOTER ------*/
+
+    footer ul {
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    footer li {
+        width: 25%;
+        max-width: 150px;
+        margin: 5px 10px 0px 10px;
+    }
 
 }

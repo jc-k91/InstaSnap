@@ -30,8 +30,13 @@ class ProfileView extends React.Component{
     }
     render = () => {
         return <div className="profile-page">
-            <button onClick={this.props.changeView1} value="search">Search</button>
-            <button onClick={this.logout}>Log Out</button>
+            <ProfileNav
+                changeView2={this.props.changeView1}
+                logout1={this.logout}
+                loggedInUser2={this.props.loggedInUser1}
+                liftStateToApp2={this.props.liftStateToApp1}
+                activeProfile2={this.props.activeProfile1}
+            ></ProfileNav>
             <UserProfile
                 activeProfile2={this.props.activeProfile1}
             ></UserProfile>
@@ -39,16 +44,37 @@ class ProfileView extends React.Component{
                 activeProfile2={this.props.activeProfile1}
                 toggleActivePost1={this.toggleActivePost}
             ></GridView>
-            <NewPostForm
-                loggedInUser2={this.props.loggedInUser1}
-                liftStateToProfileView1={this.liftStateToProfileView}
-                liftStateToApp2={this.props.liftStateToApp1}
-            ></NewPostForm>
+            { this.props.activeProfile1 === this.props.loggedInUser1
+                ?
+                    <NewPostForm
+                        loggedInUser2={this.props.loggedInUser1}
+                        liftStateToProfileView1={this.liftStateToProfileView}
+                        liftStateToApp2={this.props.liftStateToApp1}
+                    ></NewPostForm>
+                :
+                    null
+            }
             <PostEach
                 activePost1={this.state.activePost}
+                activeProfile2={this.props.activeProfile1}
+                loggedInUser2={this.props.loggedInUser1}
                 liftStateToApp2={this.props.liftStateToApp1}
                 liftStateToProfileView1={this.liftStateToProfileView}
             ></PostEach>
+            <Footer></Footer>
         </div>
     }
 }
+
+// REPLACED BY <PROFILENAV> - OKAY TO DELETE?
+// <button
+//     onClick={this.props.changeView1}
+//     value="search"
+//     className="btn">
+//         Search
+// </button>
+// <button
+//     onClick={this.logout}
+//     className="btn">
+//         Log Out
+// </button>
