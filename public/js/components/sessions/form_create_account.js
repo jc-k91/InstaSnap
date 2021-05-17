@@ -39,7 +39,7 @@ class CreateAccount extends React.Component {
             <h4>Create an Account</h4>
             <input
                 type="text"
-                placeholder="Username"
+                placeholder="username"
                 name="username"
                 onKeyUp={this.handleFormInput}
                 className="form-control"
@@ -47,7 +47,7 @@ class CreateAccount extends React.Component {
             <br/>
             <input
                 type="password"
-                placeholder="Password"
+                placeholder="password"
                 name="password"
                 onKeyUp={this.handleFormInput}
                 className="form-control"
@@ -55,7 +55,7 @@ class CreateAccount extends React.Component {
             <br/>
             <input
                 type="text"
-                placeholder="Profile Pic URL"
+                placeholder="profile pic URL"
                 name="profilePic"
                 onKeyUp={this.handleFormInput}
                 className="form-control"
@@ -63,7 +63,7 @@ class CreateAccount extends React.Component {
             <br/>
             <input
                 type="text"
-                placeholder="Bio"
+                placeholder="profile bio"
                 name="bio"
                 onKeyUp={this.handleFormInput}
                 className="form-control"
