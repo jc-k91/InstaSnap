@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
         })
     }
     render = () => {
-        return <form onSubmit={this.login} className="form-group">
+        return <form onSubmit={this.login} className="form-group landing-form">
             <h4>User Login</h4>
             <input
                 type="text"
@@ -49,6 +49,7 @@ class LoginForm extends React.Component {
             <input
                 type="submit"
                 value="Login"
+                className="btn"
             />
         </form>
     }
