@@ -1,9 +1,9 @@
 # InstaSnap [(link)](http://instasnap-ga.herokuapp.com)
 
 ## Authors
-- Clare Eisentrout | [LinkedIn](https://www.linkedin.com/in/clare-howes-eisentrout-95b5b788/), [GitHub](https://github.com/cheisentrout)
-- Jesse Moryn | [LinkedIn](https://www.linkedin.com/in/jessemoryn/), [GitHub](https://github.com/jmoryn)
-- Ju Chan (Josh) Kim | [LinkedIn](https://www.linkedin.com/in/jc-k91/), [GitHub](https://github.com/jc-k91)
+- Clare Eisentrout | [LinkedIn](https://www.linkedin.com/in/clare-howes-eisentrout-95b5b788/) | [GitHub](https://github.com/cheisentrout)
+- Jesse Moryn | [LinkedIn](https://www.linkedin.com/in/jessemoryn/) | [GitHub](https://github.com/jmoryn)
+- Ju Chan (Josh) Kim | [LinkedIn](https://www.linkedin.com/in/jc-k91/) | [GitHub](https://github.com/jc-k91)
 
 
 ## Approach
